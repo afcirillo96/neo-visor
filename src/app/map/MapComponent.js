@@ -17,19 +17,18 @@ const MapComponent = () => {
     });
 
     //Controls
-    map.addControl(new maplibregl.NavigationControl(), 'top-right');
-    map.addControl(new maplibregl.ScaleControl({}), 'bottom-right');
-    map.addControl(new maplibregl.GeolocateControl({}), 'top-right');
-    map.addControl(new maplibregl.FullscreenControl(), 'top-right');
-    // map.addControl(new maplibregl.AttributionControl(), 'bottom-left');
-    // map.addControl(new maplibregl.AttributionControl({compact: false}), 'bottom-right');
-    // map.addControl(new maplibregl.MarkerControl({}), 'top-right');
-
     const zoomhome = new MapLibreControlZoomHome({
       resetLngLat: [-64.9395, -40.5736],
       resetZoom: 3.7,    
     });
+    map.addControl(new maplibregl.NavigationControl(), 'top-right');
     map.addControl(zoomhome, 'top-right');
+    map.addControl(new maplibregl.GeolocateControl({}), 'top-right');
+    map.addControl(new maplibregl.FullscreenControl(), 'top-right');
+    map.addControl(new maplibregl.ScaleControl({}), 'bottom-right');
+    // map.addControl(new maplibregl.AttributionControl(), 'bottom-left');
+    // map.addControl(new maplibregl.AttributionControl({compact: false}), 'bottom-right');
+    // map.addControl(new maplibregl.MarkerControl({}), 'top-right');
 
     return () => map.remove();
   }, []);
