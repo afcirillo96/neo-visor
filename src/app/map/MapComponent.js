@@ -13,6 +13,7 @@ const MapComponent = () => {
       zoom: 3.7,
       bearing: 0,
       pitch: 0,
+      attributionControl: false,
     });
 
     //Controls
@@ -20,6 +21,7 @@ const MapComponent = () => {
     map.addControl(new maplibregl.ScaleControl({}), 'bottom-right');
     map.addControl(new maplibregl.GeolocateControl({}), 'top-right');
     map.addControl(new maplibregl.FullscreenControl(), 'top-right');
+    // map.addControl(new maplibregl.AttributionControl(), 'bottom-left');
     // map.addControl(new maplibregl.AttributionControl({compact: false}), 'bottom-right');
     // map.addControl(new maplibregl.MarkerControl({}), 'top-right');
 
