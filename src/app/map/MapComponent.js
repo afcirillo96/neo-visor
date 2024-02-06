@@ -24,13 +24,8 @@ const MapComponent = () => {
     // map.addControl(new maplibregl.MarkerControl({}), 'top-right');
 
     const zoomhome = new MapLibreControlZoomHome({
-      // use a LngLatBounds or LngLatBoundsLike
-      resetBounds: [[-24.5525, 28.36838], [19.77906, 49.82957]],
-      /*
-      // use a LatLng or LatLngLike plus a zoom
-      resetLngLat: [100.66541, 16.15097],
-      resetZoom: 4,
-      */
+      resetLngLat: [-64.9395, -40.5736],
+      resetZoom: 3.7,    
     });
     map.addControl(zoomhome, 'top-right');
 

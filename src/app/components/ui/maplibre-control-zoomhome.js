@@ -4,7 +4,7 @@ class MapLibreControlZoomHome {
             resetBounds: null, // LngLatBounds or LngLatBoundsLike
             resetLngLat: null, // LatLng or LatLngLike
             resetZoom: 1, // number, zoom level; useful only with resetLngLat
-            tooltipText: "Reset map view",
+            tooltipText: "Resetar Vista",
         }, options);
 
         if (! this.options.resetBounds && ! this.options.resetLngLat) throw new Error('MapLibreControlZoomHome requires resetBounds or resetLngLat');
