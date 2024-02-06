@@ -1,0 +1,118 @@
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    width: 55px;
+    height: 100%;
+    background: var(--background--color);
+    text-emphasis-color: #fff;
+    transition: left 0.3s ease;
+    z-index: 99999;
+  }
+  
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .sidebar li {
+    padding: 10px;
+    color: #fff;
+  }
+  
+  .sidebar li:hover {
+    background: #fff;
+  }
+  
+  .sidebarButton {
+    color: #fff ;
+    cursor: pointer;
+    font-size: 2rem;
+    position: relative;
+    top: 7px;
+    z-index: 999;
+  }
+  
+  .sidebarButtonOpen {
+    left: 127px;
+  }
+  
+  .sidebarButtonClosed {
+    left: 11px;
+  }
+  
+  .sidebarTitleText {
+    opacity: 0;
+    margin-bottom: 0.5rem;
+    margin-left: 1rem;
+    font-size: 1rem; 
+    font-weight: 600; 
+    color: #ffffff;
+  }
+  
+  /* SubMenu */
+  .subMenu {
+    position: fixed;
+    background: var(--background--color);
+    text-emphasis-color: #fff;
+    transition: left 0.3s ease;
+    z-index: 99999;
+  }
+
+  .subMenuStandard {
+    top: 0;
+    left: 168px;
+    height: 100%;
+    width: 280px;
+  }
+
+  .subMenuConfig {
+    top: 0;
+    left: 168px;
+    height: 100%;
+    width: 100%;
+  }
+  
+  /* Menu Buttons */ 
+  .menuButton {
+    cursor: pointer;
+    display: flex;
+    padding-bottom: 0.25rem;
+    padding-top: 0.25rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .buttonText {
+    opacity: 0;
+    display: none;
+    margin-bottom: 0.5rem;
+    margin-left: 1rem;
+    font-size: 1rem; 
+    font-weight: 600; 
+    color: #ffffff;
+  }
+
+  .buttonTextActive {
+    color: var(--selectedText--color);
+    margin-bottom: 0.5rem;
+    margin-left: 1rem;
+    font-size: 1rem; 
+    font-weight: 600; 
+  }
+
+  .buttonIcon {
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem; 
+    font-weight: 600; 
+  } 
+
+  .buttonIconActive {
+    color: var(--selectedText--color);
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem; 
+    font-weight: 600; 
+  }  
+  
+  
