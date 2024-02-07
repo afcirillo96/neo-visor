@@ -6,12 +6,12 @@ import React from 'react';
 
 export default function Layout() {
     return (
-        React.createElement('div', null,
-            React.createElement(motion.div, { className: `${styles.subMenu} ${styles.subMenuStandard}` },
-                React.createElement('div', { className: 'grow' },
-                    React.createElement('p', null, 'Buscador')
-                )
-            )
-        )
+        <div>
+            <motion.div className={`${styles.subMenu} ${styles.subMenuStandard}`}>
+                <div className='grow'>
+                    <p>Buscador</p>
+                </div>
+            </motion.div>
+        </div>
     );
 }

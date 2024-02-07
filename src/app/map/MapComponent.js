@@ -1,8 +1,8 @@
-'use client';
+'use client'
 import React, { useEffect } from 'react';
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
-import MapLibreControlZoomHome from '../components/ui/maplibre-control-zoomhome'
+import MapLibreControlZoomHome from '../components/ui/maplibre-control-zoomhome';
 
 const MapComponent = () => {
   useEffect(() => {
@@ -34,12 +34,7 @@ const MapComponent = () => {
   }, []);
 
   return (
-    React.createElement('div', {
-      id: 'map', style: {
-        width: '100%',
-        height: '100vh'
-      }
-    })
+    <div id="map" style={{ width: '100%', height: '100vh' }} />
   );
 };
 

@@ -1,5 +1,4 @@
-'use client';
-
+'use client'
 import React, { useState, useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import {
@@ -103,50 +102,53 @@ const Sidebar = () => {
     }, []);
 
     return (
-        React.createElement('div', null,
-            React.createElement(motion.div, { animate: controls, className: styles.sidebar },
-                // Sidebar Show/Hide Button
-                React.createElement('button', { className: `${styles.sidebarButton} ${sideBarActive ? styles.sidebarButtonOpen : styles.sidebarButtonClosed}`, onClick: toggleSidebar },
-                    sideBarActive ? (
-                        React.createElement(Link, { href: '/' },
-                            React.createElement(BsFillArrowLeftSquareFill, null)
-                        )
+        <div>
+            <motion.div animate={controls} className={styles.sidebar}>
+                {/* Sidebar Show/Hide Button */}
+                <button className={`${styles.sidebarButton} ${sideBarActive ? styles.sidebarButtonOpen : styles.sidebarButtonClosed}`} onClick={toggleSidebar}>
+                    {sideBarActive ? (
+                        <Link href={'/'}>
+                            <BsFillArrowLeftSquareFill/>
+                        </Link>
                     ) : (
-                        React.createElement(BsFillArrowRightSquareFill, null)
-                    )
-                ),
+                        <BsFillArrowRightSquareFill/>
+                    )}
+                </button>
 
-                // Menu Buttons
-                React.createElement('div', { className: 'grow' },
-                    pagesData.map((group, index) => (
-                        React.createElement('div', { key: index, className: 'my-2' },
-                            // Menu Title
-                            React.createElement(motion.p, { animate: controlTitleText, className: styles.sidebarTitleText },
-                                group.name
-                            ),
+                {/* Menu Buttons */}
+                <div className='grow'>
+                    {pagesData.map((group, index) => (
+                        <div key={index} className='my-2'>
 
-                            // Buttons
-                            group.items.map((item, index2) => (
-                                React.createElement('button', { onClick: () => {
+                            {/* Menu Title */}
+                            <motion.p animate={controlTitleText} className={styles.sidebarTitleText}>
+                                {group.name}
+                            </motion.p>
+
+                            {/* Buttons */}
+                            {group.items.map((item, index2) => (
+                                <button onClick={() => {
                                     toggleButtons(item.id);
                                     showMore();
-                                }, key: index2 }, // button added to fix routes issue
-                                    React.createElement(Link, { href: item.href },
-                                        React.createElement('div', { className: styles.menuButton },
-                                            React.createElement(item.icon, { className: `${pathname == item.href ? styles.buttonIconActive : styles.buttonIcon}` }),
-                                            React.createElement(motion.p, { animate: controlText, className: `${pathname == item.href ? styles.buttonTextActive : styles.buttonText}` },
-                                                ' ',
-                                                item.title
-                                            )
-                                        )
-                                    )
-                                )
-                            ))
-                        )
-                    ))
-                )
-            )
-        )
+                                }} key={index2}> {/* button added to fix routes issue */}
+                                    <Link href={item.href}  >
+                                        <div className={styles.menuButton} >
+                                            <item.icon className={`${pathname == item.href ? styles.buttonIconActive : styles.buttonIcon}`}/>
+                                            <motion.p animate={controlText} className={`${pathname == item.href ? styles.buttonTextActive : styles.buttonText}`}>
+                                                {' '}
+                                                {item.title}
+                                            </motion.p>
+                                        </div>
+                                    </Link>
+                                </button>
+                            ))}
+
+                        </div>
+                    ))}
+                </div>
+
+            </motion.div>
+        </div>
     );
 };
 

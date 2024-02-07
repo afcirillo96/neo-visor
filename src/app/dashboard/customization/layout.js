@@ -1,5 +1,4 @@
-'use client';
-
+'use client'
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import styles from '@/app/components/Sidebar.module.css';
@@ -27,10 +26,6 @@ export default function Layout() {
         document.documentElement.style.setProperty('--background--color', nuevoColorFondo);
     };
 
-    const valorVariableCSS = getComputedStyle(document.documentElement).getPropertyValue('--background--color');
-    localStorage.setItem('backgroundColor', valorVariableCSS);
-
-
     // Función para manejar el clic del botón de color por defecto
     const handleDefaultColorClick = () => {
         // Finalmente, actualiza el valor en el localStorage utilizando setItem()
@@ -44,36 +39,36 @@ export default function Layout() {
     };
 
     return (
-        React.createElement('div', null,
-            React.createElement(motion.div, { className: `${styles.subMenu} ${styles.subMenuConfig}` },
-                React.createElement('div', { className: 'grow' },
+        <div>
+            <motion.div className={`${styles.subMenu} ${styles.subMenuConfig}`}>
+                <div className='grow'>
 
-                    React.createElement('form', { onSubmit: handleSubmit },
-                        React.createElement('h1', null, 'Configuración de Estilos'),
-                        React.createElement('div', { className: "form-group" },
-                            React.createElement('label', { htmlFor: "colorFondo" }, 'Color de fondo de la aplicación:'),
-                            React.createElement('input', {
-                                type: "color",
-                                id: "colorFondo",
-                                value: colorFondo,
-                                onChange: handleChangeColorFondo
-                            }),
-                            React.createElement('button', { type: "button", onClick: handleDefaultColorClick }, 'Color por Defecto')
-                        ),
+                    <form onSubmit={handleSubmit}>
+                        <h1>Configuración de Estilos</h1>
+                        <div className="form-group">
+                            <label htmlFor="colorFondo">Color de fondo de la aplicación:</label>
+                            <input
+                                type="color"
+                                id="colorFondo"
+                                value={colorFondo}
+                                onChange={handleChangeColorFondo}
+                            />
+                            <button type="button" onClick={handleDefaultColorClick}>Color por Defecto</button>
+                        </div>
 
-                        React.createElement('div', { className: "form-group" },
-                            React.createElement('label', { htmlFor: "textSize" }, 'Tamaño del texto:'),
-                            React.createElement('input', { type: "number", id: "textSize", name: "textSize", min: "8", max: "72", required: true })
-                        ),
-                        React.createElement('div', { className: "form-group" },
-                            React.createElement('label', { htmlFor: "textColor" }, 'Color del texto:'),
-                            React.createElement('input', { type: "color", id: "textColor", name: "textColor", required: true })
-                        ),
-                        React.createElement('button', { type: "submit" }, 'Guardar cambios')
-                    )
+                        <div className="form-group">
+                            <label htmlFor="textSize">Tamaño del texto:</label>
+                            <input type="number" id="textSize" name="textSize" min="8" max="72" required />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="textColor">Color del texto:</label>
+                            <input type="color" id="textColor" name="textColor" required />
+                        </div>
+                        <button type="submit">Guardar cambios</button>
+                    </form>
 
-                )
-            )
-        )
+                </div>
+            </motion.div>
+        </div>
     );
 }
