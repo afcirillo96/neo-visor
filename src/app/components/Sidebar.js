@@ -3,22 +3,23 @@ import React, { useState, useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import {
     BsSearch,
-    BsQuestionSquareFill ,
+    BsQuestionSquareFill,
     BsFillArrowLeftSquareFill,
     BsFillArrowRightSquareFill,
     BsLayersFill,
     BsMapFill
 } from 'react-icons/bs';
-import Link from 'next/link';
-import styles from './Sidebar.module.css';
 import { MdSource } from "react-icons/md";
 import { FaHistory } from "react-icons/fa";
 import { FaCog } from 'react-icons/fa';
 import { usePathname } from 'next/navigation';
 import { useRouter } from 'next/navigation';
 
+import styles from './Sidebar.module.css';
+
 const Sidebar = () => {
     const [sideBarActive, setSideBarActive] = useState(false);
+    const [activeDivId, setActiveDivId] = useState('');
     const pathname = usePathname();
     const router = useRouter();
 
@@ -31,13 +32,13 @@ const Sidebar = () => {
             name: 'Neo Visor',
             href: '/',
             items: [
-                { id: '1', title: 'Config', icon: FaCog, href: '/dashboard/customization' },
-                { id: '2', title: 'Fuentes', icon: MdSource, href: '/dashboard/sources' },
-                { id: '3', title: 'Capas', icon: BsLayersFill, href: '/dashboard/layers' },
-                { id: '4', title: 'Ayuda', icon: BsQuestionSquareFill, href: '/dashboard/help' },
-                { id: '5', title: 'Mapas', icon: BsMapFill, href: '/dashboard/maps' },
-                { id: '6', title: 'Historial', icon: FaHistory, href: '/dashboard/history' },
-                { id: '7', title: 'Buscador', icon: BsSearch, href: '/dashboard/searcher' },
+                { id: '1', title: 'Config', icon: FaCog },
+                { id: '2', title: 'Fuentes', icon: MdSource },
+                { id: '3', title: 'Capas', icon: BsLayersFill },
+                { id: '4', title: 'Ayuda', icon: BsQuestionSquareFill },
+                { id: '5', title: 'Mapas', icon: BsMapFill },
+                { id: '6', title: 'Historial', icon: FaHistory },
+                { id: '7', title: 'Buscador', icon: BsSearch },
             ],
         },
     ];
@@ -50,7 +51,6 @@ const Sidebar = () => {
         controlText.start({
             opacity: 1,
             display: 'block',
-            // transition: { delay: 0.3 },
         });
         controlTitleText.start({
             opacity: 1,
@@ -85,69 +85,73 @@ const Sidebar = () => {
         }
     };
 
-    const [buttonActive, setButtonActive] = useState('');
-
-    const toggleButtons = (id) => {
-        if (buttonActive === id) {
-            setButtonActive('');
-            router.push('/')
-        } else {
-            setButtonActive(id);
-        }
+    const toggleSubMenu = (id) => {
+        setActiveDivId(activeDivId === id ? '' : id); // Toggle active div id
+        const url = activeDivId === id ? '' : id; // Modifying URL based on submenu state
+        history.pushState({}, '', '#' + url);
     };
 
-    // How to start the sidebar
+    const activateDivFromUrl = () => {
+        const hash = window.location.hash.substr(1); // Get fragment from URL without #
+        setActiveDivId(hash);
+    };
+
     useEffect(() => {
-        showMore();
+        activateDivFromUrl();
+    }, []);
+
+    useEffect(() => {
+        window.onhashchange = () => {
+            activateDivFromUrl();
+        };
     }, []);
 
     return (
         <div>
             <motion.div animate={controls} className={styles.sidebar}>
-                {/* Sidebar Show/Hide Button */}
                 <button className={`${styles.sidebarButton} ${sideBarActive ? styles.sidebarButtonOpen : styles.sidebarButtonClosed}`} onClick={toggleSidebar}>
                     {sideBarActive ? (
-                        <Link href={'/'}>
-                            <BsFillArrowLeftSquareFill/>
-                        </Link>
+                        <BsFillArrowLeftSquareFill />
                     ) : (
-                        <BsFillArrowRightSquareFill/>
+                        <BsFillArrowRightSquareFill />
                     )}
                 </button>
 
-                {/* Menu Buttons */}
                 <div className='grow'>
                     {pagesData.map((group, index) => (
                         <div key={index} className='my-2'>
-
-                            {/* Menu Title */}
                             <motion.p animate={controlTitleText} className={styles.sidebarTitleText}>
                                 {group.name}
                             </motion.p>
-
-                            {/* Buttons */}
                             {group.items.map((item, index2) => (
-                                <button onClick={() => {
-                                    toggleButtons(item.id);
-                                    showMore();
-                                }} key={index2}> {/* button added to fix routes issue */}
-                                    <Link href={item.href}  >
-                                        <div className={styles.menuButton} >
-                                            <item.icon className={`${pathname == item.href ? styles.buttonIconActive : styles.buttonIcon}`}/>
-                                            <motion.p animate={controlText} className={`${pathname == item.href ? styles.buttonTextActive : styles.buttonText}`}>
-                                                {' '}
-                                                {item.title}
-                                            </motion.p>
-                                        </div>
-                                    </Link>
+                                <button key={index2} onClick={() => toggleSubMenu(item.id)}>
+                                    <div className={styles.menuButton}>
+                                        <item.icon className={`${styles.buttonIcon}`} />
+                                        <motion.p animate={controlText} className={`${styles.buttonText}`}>
+                                            {item.title}
+                                        </motion.p>
+                                    </div>
                                 </button>
                             ))}
-
                         </div>
                     ))}
                 </div>
 
             </motion.div>
+
+            <div>
+                {pagesData.map((group, index) => (
+                    <div key={index}>
+                        {group.items.map((item, index2) => (
+                            <div key={index2} className={`${styles.subMenu} ${styles.subMenuStandard}`} id={item.id} style={{ display: activeDivId === item.id ? 'block' : 'none' }}>
+                                <div className='grow'>
+                                    <p>{item.title}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                ))}
+            </div>
         </div>
     );
 };
