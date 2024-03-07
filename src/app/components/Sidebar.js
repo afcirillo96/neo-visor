@@ -23,6 +23,7 @@ const Sidebar = () => {
     const controls = useAnimation();
     const controlText = useAnimation();
     const controlTitleText = useAnimation();
+    const router = useRouter();
 
     const pagesData = [
         {
@@ -79,6 +80,7 @@ const Sidebar = () => {
             showMore();
         } else {
             showLess();
+            router.push('/');
         }
     };
 
@@ -106,6 +108,7 @@ const Sidebar = () => {
     return (
         <div>
             <motion.div animate={controls} className={styles.sidebar}>
+                {/* Sidebar Show/Hide Button */}
                 <button className={`${styles.sidebarButton} ${sideBarActive ? styles.sidebarButtonOpen : styles.sidebarButtonClosed}`} onClick={toggleSidebar}>
                     {sideBarActive ? (
                         <BsFillArrowLeftSquareFill />
@@ -114,17 +117,25 @@ const Sidebar = () => {
                     )}
                 </button>
 
+                {/* Menu Buttons */}
                 <div className='grow'>
                     {pagesData.map((group, index) => (
                         <div key={index} className='my-2'>
+
+                            {/* Menu Title */}
                             <motion.p animate={controlTitleText} className={styles.sidebarTitleText}>
                                 {group.name}
                             </motion.p>
+
+                            {/* Buttons */}
                             {group.items.map((item, index2) => (
-                                <button key={index2} onClick={() => toggleSubMenu(item.id)}>
-                                    <div className={styles.menuButton}>
+                                <button onClick={() => {
+                                    toggleSubMenu(item.id);
+                                    showMore();
+                                }} key={index2}> {/* button added to fix routes issue */}
+                                        <div className={styles.menuButton}>
                                         <item.icon className={`${styles.buttonIcon}`} />
-                                        <motion.p animate={controlText} className={`${styles.buttonText}`}>
+                                        <motion.p animate={controlText} className={`${history == item.href ? styles.buttonTextActive : styles.buttonText}`}>
                                             {item.title}
                                         </motion.p>
                                     </div>
