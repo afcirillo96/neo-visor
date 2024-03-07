@@ -20,9 +20,6 @@ import styles from './Sidebar.module.css';
 const Sidebar = () => {
     const [sideBarActive, setSideBarActive] = useState(false);
     const [activeDivId, setActiveDivId] = useState('');
-    const pathname = usePathname();
-    const router = useRouter();
-
     const controls = useAnimation();
     const controlText = useAnimation();
     const controlTitleText = useAnimation();
@@ -32,13 +29,13 @@ const Sidebar = () => {
             name: 'Neo Visor',
             href: '/',
             items: [
-                { id: '1', title: 'Config', icon: FaCog },
-                { id: '2', title: 'Fuentes', icon: MdSource },
-                { id: '3', title: 'Capas', icon: BsLayersFill },
-                { id: '4', title: 'Ayuda', icon: BsQuestionSquareFill },
-                { id: '5', title: 'Mapas', icon: BsMapFill },
-                { id: '6', title: 'Historial', icon: FaHistory },
-                { id: '7', title: 'Buscador', icon: BsSearch },
+                { id: '1-Config', title: 'Configuración', icon: FaCog },
+                { id: '2-Fuentes', title: 'Fuentes', icon: MdSource },
+                { id: '3-Capas', title: 'Capas', icon: BsLayersFill },
+                { id: '4-Ayuda', title: 'Ayuda', icon: BsQuestionSquareFill },
+                { id: '5-Mapas', title: 'Mapas', icon: BsMapFill },
+                { id: '6-Historial', title: 'Historial', icon: FaHistory },
+                { id: '7-Buscador', title: 'Buscador', icon: BsSearch },
             ],
         },
     ];
@@ -143,7 +140,12 @@ const Sidebar = () => {
                 {pagesData.map((group, index) => (
                     <div key={index}>
                         {group.items.map((item, index2) => (
-                            <div key={index2} className={`${styles.subMenu} ${styles.subMenuStandard}`} id={item.id} style={{ display: activeDivId === item.id ? 'block' : 'none' }}>
+                            <div
+                                key={index2}
+                                className={`${styles.subMenu} ${styles.subMenuStandard}`}
+                                id={item.id}
+                                style={{ display: activeDivId === item.id ? 'block' : 'none' }}
+                            >
                                 <div className='grow'>
                                     <p>{item.title}</p>
                                 </div>
