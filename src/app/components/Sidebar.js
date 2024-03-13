@@ -80,16 +80,15 @@ const Sidebar = () => {
         } else {
             showLess();
             router.push('/');
+            setActiveDivId('');
         }
     };
 
     const toggleSubMenu = (id) => {
         document.getElementById('subMenu').style.display = "";
         setActiveDivId(activeDivId === id ? '' : id); // Toggle active div id
-        console.log("activeDivId: ", activeDivId)
         const url = activeDivId === id ? '' : id; // Modifying URL based on submenu state
         history.pushState({}, '', '#' + url);
-        console.log("url: ", url)
     };
 
     const activateDivFromUrl = () => {  //Modifica la URL
