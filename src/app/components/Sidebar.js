@@ -89,6 +89,12 @@ const Sidebar = () => {
         const url = activeSubMenu === id ? '' : id;         //Modifying URL based on submenu state
         history.pushState({}, '', '#' + url);               //Push to new URL
         document.getElementById('subMenu').style.display = "";
+
+        // if (activeSubMenu === id) {
+        //     document.getElementById(id).style.display = "block";
+        // } else {
+        //     document.getElementById(id).style.display = "none";
+        // }
     };
 
     const getActualURL = () => {  //Modifica la URL
