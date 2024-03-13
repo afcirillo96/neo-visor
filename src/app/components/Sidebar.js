@@ -17,7 +17,7 @@ import styles from './Sidebar.module.css';
 
 const Sidebar = () => {
     const [sideBarActive, setSideBarActive] = useState(false);
-    const [activeDivId, setActiveDivId] = useState('');
+    const [activeSubMenu, setActiveSubMenu] = useState('');
     const controls = useAnimation();
     const controlText = useAnimation();
     const controlTitleText = useAnimation();
@@ -73,33 +73,35 @@ const Sidebar = () => {
         document.getElementById('subMenu').style.display = "none";
     };
 
-    const toggleSidebar = () => {   //Activa/Desactiva SideBar
+    const toggleSideBar = () => {   //Show/Hide SideBar
         setSideBarActive(!sideBarActive);
         if (!sideBarActive) {
             showMore();
         } else {
             showLess();
             router.push('/');
-            setActiveDivId('');
+            setActiveSubMenu(''); //Resets hook
         }
     };
 
-    const toggleSubMenu = (id) => {
+    const toggleSubMenu = (id) => { //Show/Hide SubMenu
+        setActiveSubMenu(activeSubMenu === id ? '' : id);   //Toggle active div id
+        const url = activeSubMenu === id ? '' : id;         //Modifying URL based on submenu state
+        history.pushState({}, '', '#' + url);               //Push to new URL
         document.getElementById('subMenu').style.display = "";
-        setActiveDivId(activeDivId === id ? '' : id); // Toggle active div id
-        const url = activeDivId === id ? '' : id; // Modifying URL based on submenu state
-        history.pushState({}, '', '#' + url);
     };
 
-    const activateDivFromUrl = () => {  //Modifica la URL
-        // showMore();
-        const hash = window.location.hash.substr(1); // Get fragment from URL without #
-        setActiveDivId(hash);
+    const getActualURL = () => {  //Modifica la URL
+        const hash = window.location.hash.substr(1);    //Get fragment from URL without #
+        setActiveSubMenu(hash);
+        if (hash != '') {
+            showMore();
+        }
         console.log("se modifico la url:", hash)
     };
 
     useEffect(() => {   //Toma la URL actual
-        activateDivFromUrl();
+        getActualURL();
     }, []);
 
 
@@ -107,7 +109,7 @@ const Sidebar = () => {
         <div>
             <motion.div animate={controls} className={styles.sidebar}>
                 {/* Sidebar Show/Hide Button */}
-                <button className={`${styles.sidebarButton} ${sideBarActive ? styles.sidebarButtonOpen : styles.sidebarButtonClosed}`} onClick={toggleSidebar}>
+                <button className={`${styles.sidebarButton} ${sideBarActive ? styles.sidebarButtonOpen : styles.sidebarButtonClosed}`} onClick={toggleSideBar}>
                     {sideBarActive ? (
                         <BsFillArrowLeftSquareFill />
                     ) : (
@@ -154,7 +156,7 @@ const Sidebar = () => {
                                 key={index2}
                                 className={`${styles.subMenu} ${styles.subMenuStandard}`}
                                 id={item.id}
-                                style={{ display: activeDivId === item.id ? 'block' : 'none' }}
+                                style={{ display: activeSubMenu === item.id ? 'block' : 'none' }}
                             >
                                 <div className='grow'>
                                     <p>{item.title}</p>
