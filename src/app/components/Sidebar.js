@@ -13,7 +13,6 @@ import { MdSource } from "react-icons/md";
 import { FaHistory } from "react-icons/fa";
 import { FaCog } from 'react-icons/fa';
 import { useRouter } from 'next/navigation';
-
 import styles from './Sidebar.module.css';
 
 const Sidebar = () => {
@@ -87,24 +86,23 @@ const Sidebar = () => {
     const toggleSubMenu = (id) => {
         document.getElementById('subMenu').style.display = "";
         setActiveDivId(activeDivId === id ? '' : id); // Toggle active div id
+        console.log("activeDivId: ", activeDivId)
         const url = activeDivId === id ? '' : id; // Modifying URL based on submenu state
         history.pushState({}, '', '#' + url);
+        console.log("url: ", url)
     };
 
     const activateDivFromUrl = () => {  //Modifica la URL
+        // showMore();
         const hash = window.location.hash.substr(1); // Get fragment from URL without #
         setActiveDivId(hash);
+        console.log("se modifico la url:", hash)
     };
 
     useEffect(() => {   //Toma la URL actual
         activateDivFromUrl();
     }, []);
 
-    useEffect(() => {   //Cambia la URL si hubo modificacion
-        window.onhashchange = () => {
-            activateDivFromUrl();
-        };
-    }, []);
 
     return (
         <div>
