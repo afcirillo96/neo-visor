@@ -12,7 +12,6 @@ import {
 import { MdSource } from "react-icons/md";
 import { FaHistory } from "react-icons/fa";
 import { FaCog } from 'react-icons/fa';
-import { usePathname } from 'next/navigation';
 import { useRouter } from 'next/navigation';
 
 import styles from './Sidebar.module.css';
@@ -72,9 +71,10 @@ const Sidebar = () => {
             opacity: 0,
         });
         setSideBarActive(false);
+        document.getElementById('subMenu').style.display = "none";
     };
 
-    const toggleSidebar = () => {
+    const toggleSidebar = () => {   //Activa/Desactiva SideBar
         setSideBarActive(!sideBarActive);
         if (!sideBarActive) {
             showMore();
@@ -85,21 +85,22 @@ const Sidebar = () => {
     };
 
     const toggleSubMenu = (id) => {
+        document.getElementById('subMenu').style.display = "";
         setActiveDivId(activeDivId === id ? '' : id); // Toggle active div id
         const url = activeDivId === id ? '' : id; // Modifying URL based on submenu state
         history.pushState({}, '', '#' + url);
     };
 
-    const activateDivFromUrl = () => {
+    const activateDivFromUrl = () => {  //Modifica la URL
         const hash = window.location.hash.substr(1); // Get fragment from URL without #
         setActiveDivId(hash);
     };
 
-    useEffect(() => {
+    useEffect(() => {   //Toma la URL actual
         activateDivFromUrl();
     }, []);
 
-    useEffect(() => {
+    useEffect(() => {   //Cambia la URL si hubo modificacion
         window.onhashchange = () => {
             activateDivFromUrl();
         };
@@ -130,8 +131,8 @@ const Sidebar = () => {
                             {/* Buttons */}
                             {group.items.map((item, index2) => (
                                 <button onClick={() => {
-                                    toggleSubMenu(item.id);
                                     showMore();
+                                    toggleSubMenu(item.id);
                                 }} key={index2}> {/* button added to fix routes issue */}
                                         <div className={styles.menuButton}>
                                         <item.icon className={`${styles.buttonIcon}`} />
@@ -147,7 +148,8 @@ const Sidebar = () => {
 
             </motion.div>
 
-            <div>
+            {/* SubMenu */}
+            <div id='subMenu'>
                 {pagesData.map((group, index) => (
                     <div key={index}>
                         {group.items.map((item, index2) => (
@@ -165,6 +167,7 @@ const Sidebar = () => {
                     </div>
                 ))}
             </div>
+
         </div>
     );
 };
