@@ -5,15 +5,30 @@ import 'maplibre-gl/dist/maplibre-gl.css';
 import MapLibreControlZoomHome from '../components/ui/maplibre-control-zoomhome';
 import MapboxDraw from "@mapbox/mapbox-gl-draw";
 import '@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css'
-
+import LayerSwitcherControl from '../components/ui/layerSwitcherControl';
+import '../components/ui/layerSwitcherControl.css';
 
 const MapComponent = () => {
   const [drawnFeatures, setDrawnFeatures] = useState([]);
 
+  const baseMaps = {
+    "STREETS": {
+      img: "https://cloud.maptiler.com/static/img/maps/streets.png"
+    },
+    "WINTER": {
+      img: "https://cloud.maptiler.com/static/img/maps/winter.png"
+    },
+    "HYBRID": {
+      img: "https://cloud.maptiler.com/static/img/maps/hybrid.png"
+    }
+  }
+
   useEffect(() => {
+    const initialStyle = '/style.json'
+    
     const map = new maplibregl.Map({
       container: 'map',
-      style: '/style.json',
+      style: '/style.json', //initialStyle
       center: [-64.9395, -40.5736],
       zoom: 3.7,
       bearing: 0,
@@ -42,6 +57,9 @@ const MapComponent = () => {
       },
     });
 
+    map.addControl(new LayerSwitcherControl({basemaps: baseMaps, initialBasemap: initialStyle}), 'bottom-left');
+
+    
     map.addControl(draw, 'top-right');
     map.addControl(new maplibregl.NavigationControl(), 'top-right');
     map.addControl(zoomhome, 'top-right');
@@ -56,15 +74,13 @@ const MapComponent = () => {
     // map.addControl(new maplibregl.AttributionControl(), 'bottom-left');
     // map.addControl(new maplibregl.AttributionControl({compact: false}), 'bottom-right');
     // map.addControl(new maplibregl.MarkerControl({}), 'top-right');
-
-    map.on('draw.create', ({ features }) => {
-      // Capturar datos del polígono dibujado
+    
+    map.on('draw.create', ({ features }) => { // Capturar datos del polígono dibujado
       const drawnGeometry = features;
       console.log(drawnGeometry)
-      // Almacenar datos del polígono
-      setDrawnFeatures([...drawnFeatures, drawnGeometry]);
+      setDrawnFeatures([...drawnFeatures, drawnGeometry]);  // Almacenar datos del polígono
     });
-
+    
     return () => map.remove();
   }, []);
 
