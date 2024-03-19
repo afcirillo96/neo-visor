@@ -57,9 +57,7 @@ const MapComponent = () => {
       },
     });
 
-    map.addControl(new LayerSwitcherControl({basemaps: baseMaps, initialBasemap: initialStyle}), 'bottom-left');
-
-    
+    map.addControl(new LayerSwitcherControl({basemaps: baseMaps, initialBasemapId: 'STREETS'}), 'bottom-left');
     map.addControl(draw, 'top-right');
     map.addControl(new maplibregl.NavigationControl(), 'top-right');
     map.addControl(zoomhome, 'top-right');

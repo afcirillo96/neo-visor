@@ -28,22 +28,27 @@ class LayerSwitcherControl {
     onAdd(map) {
       this._map = map;
       const basemaps = this._options.basemaps;
+      const initialBaseMapId = this._options.initialBasemapId;
       Object.keys(basemaps).forEach((layerId) => {
         const base = basemaps[layerId];
         const basemapContainer = document.createElement("img");
         basemapContainer.src = base.img;
         basemapContainer.classList.add("basemap");
-        basemapContainer.dataset.id = layerId;
+        basemapContainer.id = layerId;
         basemapContainer.addEventListener("click", () => {
           const activeElement = this._container.querySelector(".active");
           activeElement.classList.remove("active");
           basemapContainer.classList.add("active");
           map.setStyle(maptilersdk.MapStyle[layerId]);
         });
-        basemapContainer.classList.add("hidden");
+        // basemapContainer.classList.add("hidden");
         this._container.appendChild(basemapContainer);
-        if (this._options.initialBasemap.id === layerId) {
-            basemapContainer.classList.add("active");
+        // if (this._options.initialBasemapId === 'STREETS') {
+        //     basemapContainer.classList.add("active");
+        // }
+
+        if (basemapContainer.id === initialBaseMapId) {
+          basemapContainer.classList.add("active");
         }
       });
       return this._container;
