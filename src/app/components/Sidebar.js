@@ -14,6 +14,9 @@ import { FaHistory } from "react-icons/fa";
 import { FaCog } from 'react-icons/fa';
 import { useRouter } from 'next/navigation';
 import styles from './Sidebar.module.css';
+import Settings from './Settings';
+import Sources from './Sources';
+import SearchBar from './SearchBar';
 
 const Sidebar = () => {
     const [sideBarActive, setSideBarActive] = useState(false);
@@ -28,13 +31,13 @@ const Sidebar = () => {
             name: 'Neo Visor',
             href: '/',
             items: [
-                { id: '1-Config', title: 'Configuración', icon: FaCog },
-                { id: '2-Fuentes', title: 'Fuentes', icon: MdSource },
-                { id: '3-Capas', title: 'Capas', icon: BsLayersFill },
-                { id: '4-Ayuda', title: 'Ayuda', icon: BsQuestionSquareFill },
-                { id: '5-Mapas', title: 'Mapas', icon: BsMapFill },
-                { id: '6-Historial', title: 'Historial', icon: FaHistory },
-                { id: '7-Buscador', title: 'Buscador', icon: BsSearch },
+                { id: '1-Config', title: 'Configuración', icon: FaCog, component: <Settings/>},
+                { id: '2-Fuentes', title: 'Fuentes', icon: MdSource, component: <Sources/>},
+                { id: '3-Capas', title: 'Capas', icon: BsLayersFill, component: <Sources/>},
+                { id: '4-Ayuda', title: 'Ayuda', icon: BsQuestionSquareFill, component: <Sources/>},
+                { id: '5-Mapas', title: 'Mapas', icon: BsMapFill, component: <Sources/>},
+                { id: '6-Historial', title: 'Historial', icon: FaHistory, component: <Sources/>},
+                { id: '7-Buscador', title: 'Buscador', icon: BsSearch, component: <SearchBar/>},
             ],
         },
     ];
@@ -166,6 +169,7 @@ const Sidebar = () => {
                             >
                                 <div className='grow'>
                                     <p>{item.title}</p>
+                                    {item.component}
                                 </div>
                             </div>
                         ))}
