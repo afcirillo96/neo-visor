@@ -39,9 +39,6 @@ const Settings = () => {
     };
 
     return (
-        <div>
-            <motion.div className={`${styles.subMenu} ${styles.subMenuConfig}`}>
-                <div className='grow'>
 
                     <form onSubmit={handleSubmit}>
                         <h1>Configuración de Estilos</h1>
@@ -67,9 +64,7 @@ const Settings = () => {
                         <button type="submit">Guardar cambios</button>
                     </form>
 
-                </div>
-            </motion.div>
-        </div>
+
     );
 
 }

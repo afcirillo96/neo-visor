@@ -32,11 +32,11 @@ const Sidebar = () => {
             href: '/',
             items: [
                 { id: '1-Config', title: 'Configuración', icon: FaCog, component: <Settings/>},
-                { id: '2-Fuentes', title: 'Fuentes', icon: MdSource, component: <Sources/>},
-                { id: '3-Capas', title: 'Capas', icon: BsLayersFill, component: <Sources/>},
-                { id: '4-Ayuda', title: 'Ayuda', icon: BsQuestionSquareFill, component: <Sources/>},
-                { id: '5-Mapas', title: 'Mapas', icon: BsMapFill, component: <Sources/>},
-                { id: '6-Historial', title: 'Historial', icon: FaHistory, component: <Sources/>},
+                { id: '2-Fuentes', title: 'Fuentes', icon: MdSource,},
+                { id: '3-Capas', title: 'Capas', icon: BsLayersFill, },
+                { id: '4-Ayuda', title: 'Ayuda', icon: BsQuestionSquareFill,},
+                { id: '5-Mapas', title: 'Mapas', icon: BsMapFill, },
+                { id: '6-Historial', title: 'Historial', icon: FaHistory, },
                 { id: '7-Buscador', title: 'Buscador', icon: BsSearch, component: <SearchBar/>},
             ],
         },
@@ -161,17 +161,27 @@ const Sidebar = () => {
                 {pagesData.map((group, index) => (
                     <div key={index}>
                         {group.items.map((item, index2) => (
-                            <div
-                                key={index2}
-                                className={`${styles.subMenu} ${styles.subMenuStandard}`}
-                                id={item.id}
-                                style={{ display: activeSubMenu === item.id ? 'block' : 'none' }}
-                            >
-                                <div className='grow'>
-                                    <p>{item.title}</p>
+
+                            item.component ? (
+                                <div
+                                    id={item.id}
+                                    key={index2}
+                                    className={`${styles.subMenu} ${styles.subMenuStandard}`}
+                                    style={{ display: activeSubMenu === item.id ? 'block' : 'none' }}
+                                >
                                     {item.component}
                                 </div>
-                            </div>
+                            ) : (
+                                <div
+                                    id={item.id}
+                                    key={index2}
+                                    className={`${styles.subMenu} ${styles.subMenuStandard}`}
+                                    style={{ display: activeSubMenu === item.id ? 'block' : 'none' }}
+                                >
+                                    <p>{item.title}</p>
+                                </div>
+                            )
+
                         ))}
                     </div>
                 ))}

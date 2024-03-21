@@ -5,13 +5,10 @@ import styles from '@/app/components/Sidebar.module.css';
 
 function SearchBar() {
   return (
-    <motion.div className={`${styles.subMenu} ${styles.subMenuStandard}`}>
       <div className="search-container">
         <input type="text" placeholder="Buscar..." />
         <button type="submit">Buscar</button>
       </div>
-    </motion.div>
-
   );
 }
 
