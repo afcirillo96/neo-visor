@@ -106,7 +106,7 @@ const Sidebar = () => {
         if (hash != '') {
             showMore();
         }
-        console.log("se modifico la url:", hash)
+        // console.log("se modifico la url:", hash)
     };
 
     useEffect(() => {   //Toma la URL actual

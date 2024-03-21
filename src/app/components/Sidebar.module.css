@@ -3,7 +3,7 @@
     position: fixed;
     top: 0;
     width: 55px;
-    height: 72%;
+    height: 93%;
     background: var(--background--color);
     text-emphasis-color: #fff;
     transition: left 0.3s ease;
@@ -79,7 +79,7 @@
     display: flex;
     padding-bottom: 0.25rem;
     padding-top: 0.25rem;
-    padding-left: 1rem;
+    padding-left: 0.8rem;
     padding-right: 1rem;
   }
   
