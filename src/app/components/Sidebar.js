@@ -31,13 +31,14 @@ const Sidebar = () => {
             name: 'Neo Visor',
             href: '/',
             items: [
-                { id: '1-Config', title: 'Configuración', icon: FaCog, component: <Settings/>},
+                //si tiene component se renderiza. Si no tiene component renderiza un div standard
+                { id: '1-Config', title: 'Configuración', icon: FaCog, component: <Settings/>, compStyles: styles.subMenuConfig },
                 { id: '2-Fuentes', title: 'Fuentes', icon: MdSource,},
                 { id: '3-Capas', title: 'Capas', icon: BsLayersFill, },
                 { id: '4-Ayuda', title: 'Ayuda', icon: BsQuestionSquareFill,},
                 { id: '5-Mapas', title: 'Mapas', icon: BsMapFill, },
                 { id: '6-Historial', title: 'Historial', icon: FaHistory, },
-                { id: '7-Buscador', title: 'Buscador', icon: BsSearch, component: <SearchBar/>},
+                { id: '7-Buscador', title: 'Buscador', icon: BsSearch, component: <SearchBar/>, compStyles: styles.subMenuConfig },
             ],
         },
     ];
@@ -166,7 +167,7 @@ const Sidebar = () => {
                                 <div
                                     id={item.id}
                                     key={index2}
-                                    className={`${styles.subMenu} ${styles.subMenuStandard}`}
+                                    className={`${styles.subMenu} ${item.compStyles}`}
                                     style={{ display: activeSubMenu === item.id ? 'block' : 'none' }}
                                 >
                                     {item.component}
