@@ -8,6 +8,10 @@ import '@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css'
 import LayerSwitcherControl from '../components/ui/layerSwitcherControl';
 import '../components/ui/layerSwitcherControl.css';
 
+//maptiler
+// import * as maptilersdk from '@maptiler/sdk';
+// import "@maptiler/sdk/dist/maptiler-sdk.css";
+
 const MapComponent = () => {
   const [drawnFeatures, setDrawnFeatures] = useState([]);
 
@@ -26,7 +30,7 @@ const MapComponent = () => {
   useEffect(() => {
     const initialStyle = '/style.json'
     
-    const map = new maplibregl.Map({
+    const map = new maplibregl.Map({ //maplibregl o maptilersdk
       container: 'map',
       style: '/style.json', //initialStyle
       center: [-64.9395, -40.5736],

@@ -1,3 +1,11 @@
+//maptiler
+// import * as maptilersdk from '@maptiler/sdk';
+// import "@maptiler/sdk/dist/maptiler-sdk.css";
+
+//maplibre
+import maplibregl from 'maplibre-gl';
+import 'maplibre-gl/dist/maplibre-gl.css';
+
 class LayerSwitcherControl {
   
     constructor(options) {
@@ -39,7 +47,7 @@ class LayerSwitcherControl {
           const activeElement = this._container.querySelector(".active");
           activeElement.classList.remove("active");
           basemapContainer.classList.add("active");
-          map.setStyle(maptilersdk.MapStyle[layerId]);
+          map.setStyle(maplibregl.MapStyle[layerId]);
         });
         // basemapContainer.classList.add("hidden");
         this._container.appendChild(basemapContainer);
