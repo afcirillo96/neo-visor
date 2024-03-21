@@ -1,7 +1,5 @@
 'use client'
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import styles from '@/app/components/Sidebar.module.css';
 
 const Settings = () => {
     const [colorFondo, setColorFondo] = useState('#ffffff'); // Estado para el color de fondo

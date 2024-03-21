@@ -15,7 +15,6 @@ import { FaCog } from 'react-icons/fa';
 import { useRouter } from 'next/navigation';
 import styles from './Sidebar.module.css';
 import Settings from './Settings';
-import Sources from './Sources';
 import SearchBar from './SearchBar';
 
 const Sidebar = () => {
@@ -38,7 +37,7 @@ const Sidebar = () => {
                 { id: '4-Ayuda', title: 'Ayuda', icon: BsQuestionSquareFill,},
                 { id: '5-Mapas', title: 'Mapas', icon: BsMapFill, },
                 { id: '6-Historial', title: 'Historial', icon: FaHistory, },
-                { id: '7-Buscador', title: 'Buscador', icon: BsSearch, component: <SearchBar/>, compStyles: styles.subMenuConfig },
+                { id: '7-Buscador', title: 'Buscador', icon: BsSearch, component: <SearchBar/>, compStyles: styles.subMenuStandard },
             ],
         },
     ];
