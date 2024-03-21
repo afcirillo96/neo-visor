@@ -5,10 +5,10 @@ import styles from '@/app/components/Sidebar.module.css';
 
 function SearchBar() {
   return (
-      <div className="search-container">
-        <input type="text" placeholder="Buscar..." />
-        <button type="submit">Buscar</button>
-      </div>
+    <div className="search-container">
+      <input type="text" placeholder="Buscar..." />
+      <button type="submit">Buscar</button>
+    </div>
   );
 }
 

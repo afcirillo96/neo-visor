@@ -39,32 +39,29 @@ const Settings = () => {
     };
 
     return (
+        <form onSubmit={handleSubmit}>
+            <h1>Configuración de Estilos</h1>
+            <div className="form-group">
+                <label htmlFor="colorFondo">Color de fondo de la aplicación:</label>
+                <input
+                    type="color"
+                    id="colorFondo"
+                    value={colorFondo}
+                    onChange={handleChangeColorFondo}
+                />
+                <button type="button" onClick={handleDefaultColorClick}>Color por Defecto</button>
+            </div>
 
-                    <form onSubmit={handleSubmit}>
-                        <h1>Configuración de Estilos</h1>
-                        <div className="form-group">
-                            <label htmlFor="colorFondo">Color de fondo de la aplicación:</label>
-                            <input
-                                type="color"
-                                id="colorFondo"
-                                value={colorFondo}
-                                onChange={handleChangeColorFondo}
-                            />
-                            <button type="button" onClick={handleDefaultColorClick}>Color por Defecto</button>
-                        </div>
-
-                        <div className="form-group">
-                            <label htmlFor="textSize">Tamaño del texto:</label>
-                            <input type="number" id="textSize" name="textSize" min="8" max="72" required />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="textColor">Color del texto:</label>
-                            <input type="color" id="textColor" name="textColor" required />
-                        </div>
-                        <button type="submit">Guardar cambios</button>
-                    </form>
-
-
+            <div className="form-group">
+                <label htmlFor="textSize">Tamaño del texto:</label>
+                <input type="number" id="textSize" name="textSize" min="8" max="72" required />
+            </div>
+            <div className="form-group">
+                <label htmlFor="textColor">Color del texto:</label>
+                <input type="color" id="textColor" name="textColor" required />
+            </div>
+            <button type="submit">Guardar cambios</button>
+        </form>
     );
 
 }
