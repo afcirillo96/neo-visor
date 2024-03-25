@@ -31,13 +31,13 @@ const Sidebar = () => {
             href: '/',
             items: [
                 //si tiene component se renderiza. Si no tiene component renderiza un div standard
-                { id: '1-Config', title: 'Configuración', icon: FaCog, component: <Settings/>, compStyles: styles.subMenuConfig },
-                { id: '2-Fuentes', title: 'Fuentes', icon: MdSource,},
-                { id: '3-Capas', title: 'Capas', icon: BsLayersFill, },
-                { id: '4-Ayuda', title: 'Ayuda', icon: BsQuestionSquareFill,},
-                { id: '5-Mapas', title: 'Mapas', icon: BsMapFill, },
-                { id: '6-Historial', title: 'Historial', icon: FaHistory, },
-                { id: '7-Buscador', title: 'Buscador', icon: BsSearch, component: <SearchBar/>, compStyles: styles.subMenuStandard },
+                { id: '1-Buscador', title: 'Buscador', icon: BsSearch, component: <SearchBar/>, compStyles: styles.subMenuStandard },
+                { id: '2-Capas', title: 'Capas', icon: BsLayersFill, },
+                { id: '3-Fuentes', title: 'Fuentes', icon: MdSource,},
+                { id: '4-Mapas', title: 'Mapas', icon: BsMapFill, },
+                { id: '5-Historial', title: 'Historial', icon: FaHistory, },
+                { id: '6-Ayuda', title: 'Ayuda', icon: BsQuestionSquareFill,},
+                { id: '7-Config', title: 'Config', icon: FaCog, component: <Settings/>, compStyles: styles.subMenuConfig },
             ],
         },
     ];

@@ -2,7 +2,7 @@
 .sidebar {
   background: var(--background--color);
   border-radius: 6px;
-  height: 93%;
+  height: 82%;
   margin-top: 0.3rem;
   margin-left: 0.3rem;
   position: fixed;
@@ -64,7 +64,7 @@
 
 .subMenuStandard {
   left: 168px;
-  height: 93%;
+  height: 82%;
   width: 280px;
   margin-top: 0.3rem;
   border-radius: 6px;
@@ -72,7 +72,7 @@
 
 .subMenuConfig {
   left: 168px;
-  height: 93%;
+  height: 82%;
   width: 87%;
   margin-top: 0.3rem;
   border-radius: 6px;

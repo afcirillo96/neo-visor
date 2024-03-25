@@ -71,8 +71,8 @@ const MapComponent = () => {
       },
       trackUserLocation: true
     }), 'top-right');
-    map.addControl(new maplibregl.ScaleControl({}), 'bottom-left');
-    map.addControl(new LayerSwitcherControl({basemaps: baseMaps, initialBasemapId: 'STREETS'}), 'bottom-right');
+    map.addControl(new maplibregl.ScaleControl({}), 'bottom-right');
+    map.addControl(new LayerSwitcherControl({basemaps: baseMaps, initialBasemapId: 'STREETS'}), 'bottom-left');
     // map.addControl(new maplibregl.AttributionControl(), 'bottom-left');
     // map.addControl(new maplibregl.AttributionControl({compact: false}), 'bottom-right');
     // map.addControl(new maplibregl.MarkerControl({}), 'top-right');

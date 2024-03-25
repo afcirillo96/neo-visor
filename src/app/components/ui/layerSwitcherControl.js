@@ -14,7 +14,7 @@ class LayerSwitcherControl {
       this._container.classList.add("maplibregl-ctrl");
       this._container.classList.add("maplibregl-ctrl-basemaps");
       this._container.classList.add("closed");
-      switch (this._options.expandDirection || "left") {
+      switch (this._options.expandDirection || "right") {
         case "top":
           this._container.classList.add("reverse");
         case "down":
