@@ -48,7 +48,12 @@ class LayerSwitcherControl {
           activeElement.classList.remove("active");
           basemapContainer.classList.add("active");
 
-          map.setLayoutProperty(layerId, 'visibility', 'visible'); // Oculta todas las capas raster
+          map.getStyle().layers.forEach(layer => {
+            if (layer.type === 'raster') {
+              map.setLayoutProperty(layer.id, 'visibility', 'none'); // Hides all raster basemaps
+            }
+          });
+          map.setLayoutProperty(layerId, 'visibility', 'visible'); //activates raster basemap
 
         });
         this._container.appendChild(basemapContainer);
