@@ -47,13 +47,11 @@ class LayerSwitcherControl {
           const activeElement = this._container.querySelector(".active");
           activeElement.classList.remove("active");
           basemapContainer.classList.add("active");
-          map.setStyle(maplibregl.MapStyle[layerId]);
+
+          map.setLayoutProperty(layerId, 'visibility', 'visible'); // Oculta todas las capas raster
+
         });
-        // basemapContainer.classList.add("hidden");
         this._container.appendChild(basemapContainer);
-        // if (this._options.initialBasemapId === 'STREETS') {
-        //     basemapContainer.classList.add("active");
-        // }
 
         if (basemapContainer.id === initialBaseMapId) {
           basemapContainer.classList.add("active");

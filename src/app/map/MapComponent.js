@@ -16,13 +16,13 @@ const MapComponent = () => {
   const [drawnFeatures, setDrawnFeatures] = useState([]);
 
   const baseMaps = {
-    "STREETS": {
+    "argenmap": {
       img: "https://cloud.maptiler.com/static/img/maps/streets.png"
     },
-    "WINTER": {
+    "argenmap_gris": {
       img: "https://cloud.maptiler.com/static/img/maps/winter.png"
     },
-    "HYBRID": {
+    "argenmap_oscuro": {
       img: "https://cloud.maptiler.com/static/img/maps/hybrid.png"
     }
   }
@@ -72,7 +72,7 @@ const MapComponent = () => {
       trackUserLocation: true
     }), 'top-right');
     map.addControl(new maplibregl.ScaleControl({}), 'bottom-right');
-    map.addControl(new LayerSwitcherControl({basemaps: baseMaps, initialBasemapId: 'STREETS'}), 'bottom-left');
+    map.addControl(new LayerSwitcherControl({basemaps: baseMaps, initialBasemapId: 'argenmap'}), 'bottom-left');
     // map.addControl(new maplibregl.AttributionControl(), 'bottom-left');
     // map.addControl(new maplibregl.AttributionControl({compact: false}), 'bottom-right');
     // map.addControl(new maplibregl.MarkerControl({}), 'top-right');
