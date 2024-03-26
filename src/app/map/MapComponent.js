@@ -15,15 +15,27 @@ import '../components/ui/layerSwitcherControl.css';
 const MapComponent = () => {
   const [drawnFeatures, setDrawnFeatures] = useState([]);
 
+  // const baseMapsNEW = {};
+  // map.getStyle().layers.forEach(layer => {
+  //   if (layer.type === 'raster') {
+  //     baseMapsNEW[layer.id] = {
+  //       id: layer.id,
+  //       type: layer.type,
+  //       source: layer.source,
+  //     };
+  //   }
+  // });
+  // console.log(baseMapsNEW)
+
   const baseMaps = {
     "argenmap": {
-      img: "https://cloud.maptiler.com/static/img/maps/streets.png"
+      img: "/argenmap.png"
     },
     "argenmap_gris": {
-      img: "https://cloud.maptiler.com/static/img/maps/winter.png"
+      img: "/argenmap-gris.png"
     },
     "argenmap_oscuro": {
-      img: "https://cloud.maptiler.com/static/img/maps/hybrid.png"
+      img: "/argenmap-oscuro.png"
     }
   }
 
