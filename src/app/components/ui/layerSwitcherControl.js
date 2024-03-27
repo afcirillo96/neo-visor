@@ -46,7 +46,7 @@ class LayerSwitcherControl {
           basemapContainer.classList.add("active");
 
           map.getStyle().layers.forEach(layer => {
-            if (layer.type === 'raster') {
+            if (layer.metadata && layer.metadata.group === 'basemap') {
               map.setLayoutProperty(layer.id, 'visibility', 'none'); //hides all raster basemaps
             }
           });
@@ -59,6 +59,32 @@ class LayerSwitcherControl {
           basemapContainer.classList.add("active");
         }
       });
+      //   const base = basemaps[basemapId];
+      //   const basemapContainer = document.createElement("img");
+
+      //   basemapContainer.src = base.img;
+        
+      //   basemapContainer.classList.add("basemap");
+      //   basemapContainer.id = basemapId;
+      //   basemapContainer.addEventListener("click", () => {
+      //     const activeElement = this._container.querySelector(".active");
+      //     activeElement.classList.remove("active");
+      //     basemapContainer.classList.add("active");
+
+      //     map.getStyle().layers.forEach(layer => {
+      //       if (layer.metadata && layer.metadata.group === 'basemap') {
+      //         map.setLayoutProperty(layer.id, 'visibility', 'none'); //hides all raster basemaps
+      //       }
+      //     });
+      //     map.setLayoutProperty(basemapId, 'visibility', 'visible'); //activates raster basemap
+
+      //   });
+      //   this._container.appendChild(basemapContainer);
+
+      //   if (basemapContainer.id === initialBaseMapId) {
+      //     basemapContainer.classList.add("active");
+      //   }
+      // });
       return this._container;
     }
   
