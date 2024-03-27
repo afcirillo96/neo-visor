@@ -1,118 +1,123 @@
 /* Sidebar */
 .sidebar {
-    position: fixed;
-    top: 0;
-    width: 55px;
-    height: 100%;
-    background: var(--background--color);
-    text-emphasis-color: #fff;
-    transition: left 0.3s ease;
-    z-index: 99999;
-  }
+  background: var(--background--color);
+  border-radius: 6px;
+  height: 82%;
+  margin-top: 0.3rem;
+  margin-left: 0.3rem;
+  position: fixed;
+  text-emphasis-color: #fff;
+  transition: left 0.3s ease;
+  width: 55px;
+  z-index: 99999;
+  -webkit-text-emphasis-color: #fff;
+}
   
-  .sidebar ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .sidebar li {
-    padding: 10px;
-    color: #fff;
-  }
-  
-  .sidebar li:hover {
-    background: #fff;
-  }
-  
-  .sidebarButton {
-    color: #fff ;
-    cursor: pointer;
-    font-size: 2rem;
-    position: relative;
-    top: 7px;
-    z-index: 999;
-  }
-  
-  .sidebarButtonOpen {
-    left: 127px;
-  }
-  
-  .sidebarButtonClosed {
-    left: 11px;
-  }
-  
-  .sidebarTitleText {
-    opacity: 0;
-    margin-bottom: 0.5rem;
-    margin-left: 1rem;
-    font-size: 1rem; 
-    font-weight: 600; 
-    color: #ffffff;
-  }
-  
-  /* SubMenu */
-  .subMenu {
-    position: fixed;
-    background: var(--background--color);
-    text-emphasis-color: #fff;
-    transition: left 0.3s ease;
-    z-index: 99999;
-  }
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
 
-  .subMenuStandard {
-    top: 0;
-    left: 168px;
-    height: 100%;
-    width: 280px;
-  }
+.sidebar li {
+  padding: 10px;
+  color: #fff;
+}
 
-  .subMenuConfig {
-    top: 0;
-    left: 168px;
-    height: 100%;
-    width: 100%;
-  }
-  
-  /* Menu Buttons */ 
-  .menuButton {
-    cursor: pointer;
-    display: flex;
-    padding-bottom: 0.25rem;
-    padding-top: 0.25rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-  
-  .buttonText {
-    opacity: 0;
-    display: none;
-    margin-bottom: 0.5rem;
-    margin-left: 1rem;
-    font-size: 1rem; 
-    font-weight: 600; 
-    color: #ffffff;
-  }
+.sidebar li:hover {
+  background: #fff;
+}
 
-  .buttonTextActive {
-    color: var(--selectedText--color);
-    margin-bottom: 0.5rem;
-    margin-left: 1rem;
-    font-size: 1rem; 
-    font-weight: 600; 
-  }
+.sidebarButton {
+  color: #fff ;
+  cursor: pointer;
+  font-size: 2rem;
+  position: relative;
+  top: 7px;
+  z-index: 999;
+}
 
-  .buttonIcon {
-    color: #ffffff;
-    margin-bottom: 0.5rem;
-    font-size: 1.5rem; 
-    font-weight: 600; 
-  } 
+.sidebarButtonOpen {
+  left: 127px;
+}
 
-  .buttonIconActive {
-    color: var(--selectedText--color);
-    margin-bottom: 0.5rem;
-    font-size: 1.5rem; 
-    font-weight: 600; 
-  }  
+.sidebarButtonClosed {
+  left: 11px;
+}
+
+.sidebarTitleText {
+  opacity: 0;
+  margin-bottom: 0.5rem;
+  margin-left: 1rem;
+  font-size: 1rem; 
+  font-weight: 600; 
+  color: #ffffff;
+}
+
+/* SubMenu */
+.subMenu {
+  position: fixed;
+  background: var(--background--color);
+  text-emphasis-color: #fff;
+  transition: left 0.3s ease;
+  z-index: 99999;
+}
+
+.subMenuStandard {
+  left: 168px;
+  height: 82%;
+  width: 280px;
+  margin-top: 0.3rem;
+  border-radius: 6px;
+}
+
+.subMenuConfig {
+  left: 168px;
+  height: 82%;
+  width: 87%;
+  margin-top: 0.3rem;
+  border-radius: 6px;
+}
+
+/* Menu Buttons */ 
+.menuButton {
+  cursor: pointer;
+  display: flex;
+  padding-bottom: 0.25rem;
+  padding-top: 0.25rem;
+  padding-left: 0.8rem;
+  padding-right: 1rem;
+}
+
+.buttonText {
+  opacity: 0;
+  display: none;
+  margin-bottom: 0.5rem;
+  margin-left: 1rem;
+  font-size: 1rem; 
+  font-weight: 600; 
+  color: #ffffff;
+}
+
+.buttonTextActive {
+  color: var(--selectedText--color);
+  margin-bottom: 0.5rem;
+  margin-left: 1rem;
+  font-size: 1rem; 
+  font-weight: 600; 
+}
+
+.buttonIcon {
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem; 
+  font-weight: 600; 
+} 
+
+.buttonIconActive {
+  color: var(--selectedText--color);
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem; 
+  font-weight: 600; 
+}  
   
   

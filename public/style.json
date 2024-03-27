@@ -11,197 +11,139 @@
   "bearing": 0,
   "pitch": 50,
   "sources": {
-    "maplibre": {
-      "url": "https://demotiles.maplibre.org/tiles/tiles.json",
-      "type": "vector"
+    "argenmap": {
+      "tiles": [
+        "https://wms.ign.gob.ar/geoserver/gwc/service/tms/1.0.0/capabaseargenmap@EPSG%3A3857@png/{z}/{x}/{y}.png"
+      ],
+      "scheme": "tms",
+      "type": "raster",
+      "tileSize": 256
     },
-    "cerros": {
-      "url": "http://172.20.205.70:3000/sig_cerros_visor",
-      "type": "vector"
+    "argenmap_gris": {
+      "tiles": [
+        "https://wms.ign.gob.ar/geoserver/gwc/service/tms/1.0.0/mapabase_gris@EPSG%3A3857@png/{z}/{x}/{y}.png"
+      ],
+      "scheme": "tms",
+      "type": "raster",
+      "tileSize": 256
     },
-    "provincia": {
-      "type": "vector",
-      "url": "http://172.20.205.70:3000/sig_provincia"
+    "argenmap_oscuro": {
+      "tiles": [
+        "https://wms.ign.gob.ar/geoserver/gwc/service/tms/1.0.0/argenmap_oscuro@EPSG%3A3857@png/{z}/{x}/{y}.png"
+      ],
+      "scheme": "tms",
+      "type": "raster",
+      "tileSize": 256
     },
-    "departamento": {
-      "type": "vector",
-      "url": "http://172.20.205.70:3000/sig_departamento"
+    "argenmap_topo": {
+      "tiles": [
+        "https://wms.ign.gob.ar/geoserver/gwc/service/tms/1.0.0/mapabase_topo@EPSG%3A3857@png/{z}/{x}/{y}.png"
+      ],
+      "scheme": "tms",
+      "type": "raster",
+      "tileSize": 256
+    },
+    "esri_imagery": {
+      "tiles": [
+        "https://server.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
+      ],
+      "type": "raster",
+      "tileSize": 256
+    },
+    "esri_imagery_t": {
+      "tiles": [
+        "https://server.arcgisonline.com/ArcGIS/rest/services/World_Physical_Map/MapServer/tile/{z}/{y}/{x}"
+      ],
+      "type": "raster",
+      "tileSize": 256
+    },
+    "here_imagery": {
+      "tiles": [
+        "https://2.aerial.maps.api.here.com/maptile/2.1/maptile/newest/satellite.day/{z}/{x}/{y}/256/png8?app_id=XiMlA4JwMurUFFYUWYe3&app_code=oTsmqovbl2YudG3E0UlxDA"
+      ],
+      "type": "raster",
+      "tileSize": 256
     }
+    
   },
   "sprite": "https://demotiles.maplibre.org/styles/osm-bright-gl-style/sprite",
   "glyphs": "https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf",
   "layers": [
     {
-      "id": "background",
-      "type": "background",
-      "maxzoom": 24,
-      "filter": ["all"],
+      "id": "argenmap",
+      "type": "raster",
+      "source": "argenmap",
       "layout": {"visibility": "visible"},
-      "paint": {"background-color": "#D8F2FF"}
-    },
-    {
-      "id": "coastline",
-      "type": "line",
-      "source": "maplibre",
-      "source-layer": "countries",
       "minzoom": 0,
-      "maxzoom": 24,
-      "filter": ["all"],
-      "layout": {
-        "line-cap": "round",
-        "line-join": "round",
-        "visibility": "visible"
-      },
-      "paint": {
-        "line-blur": 0.5,
-        "line-color": "#198EC8",
-        "line-width": {"stops": [[0, 2], [6, 6], [14, 9], [22, 18]]}
+      "maxzoom": 22,
+      "metadata": {
+        "group": "basemap"
       }
     },
     {
-      "id": "countries-fill",
-      "type": "fill",
-      "source": "maplibre",
-      "source-layer": "countries",
-      "maxzoom": 24,
-      "filter": ["all", ["!=", "NAME", "Argentina"]],
-      "layout": {"visibility": "visible"},
-      "paint": {"fill-color": "rgba(240, 240, 240, 1)"}
-    },
-    {
-      "id": "argentina-fill",
-      "type": "fill",
-      "source": "maplibre",
-      "source-layer": "countries",
-      "maxzoom": 24,
-      "filter": ["all", ["==", "NAME", "Argentina"]],
-      "layout": {"visibility": "visible"},
-      "paint": {"fill-color": "rgba(255, 245, 234, 1)"}
-    },
-    {
-      "id": "lim_departamento",
-      "type": "line",
-      "source": "departamento",
-      "source-layer": "sig_departamento",
-      "maxzoom": 24,
-      "layout": {
-        "line-cap": "round",
-        "line-join": "round",
-        "visibility": "visible"
-      },
-      "paint": {
-        "line-color": "rgba(90, 26, 210, 1)",
-        "line-width": {"stops": [[1, 1], [6, 2], [14, 6], [22, 12]]},
-        "line-opacity": {"stops": [[3, 0.5], [6, 1]]}
-      }
-    },
-    {
-      "id": "lim_provincias_cba",
-      "type": "fill",
-      "source": "provincia",
-      "source-layer": "sig_provincia",
-      "maxzoom": 24,
-      "filter": ["all", ["!=", "termino_especifico", "Córdoba"]],
-      "layout": {"visibility": "visible"},
-      "paint": {"fill-color": "rgba(168, 165, 159, 1)", "fill-opacity": 0.8}
-    },
-    {
-      "id": "lim_internacional",
-      "type": "line",
-      "source": "maplibre",
-      "source-layer": "countries",
-      "maxzoom": 24,
-      "layout": {
-        "line-cap": "round",
-        "line-join": "round",
-        "visibility": "visible"
-      },
-      "paint": {
-        "line-color": "rgba(230, 220, 250, 1)",
-        "line-width": {"stops": [[1, 1], [6, 2], [14, 6], [22, 12]]},
-        "line-opacity": {"stops": [[3, 0.5], [6, 1]]}
-      }
-    },
-    {
-      "id": "cerros",
-      "type": "symbol",
-      "source": "cerros",
-      "source-layer": "sig_cerros_visor",
-      "minzoom": 4,
-      "maxzoom": 24,
-      "layout": {
-        "icon-image": "mountain_11",
-        "text-field": "{nombre_geografico}",
-        "text-size": 11,
-        "text-anchor": "top",
-        "text-offset": [0, 0.5],
-        "text-max-width": 8,
-        "visibility": "none"
-      },
-      "paint": {
-        "text-color": "#472909",
-        "text-halo-blur": 1,
-        "text-halo-color": "rgba(255, 255, 255, 1)",
-        "text-halo-width": 1
-      }
-    },
-    {
-      "id": "geolines",
-      "type": "line",
-      "source": "maplibre",
-      "source-layer": "geolines",
-      "maxzoom": 24,
-      "filter": ["all", ["==", "name", "International Date Line"]],
+      "id": "argenmap_gris",
+      "type": "raster",
+      "source": "argenmap_gris",
       "layout": {"visibility": "none"},
-      "paint": {
-        "line-color": "#1077B0",
-        "line-opacity": 1,
-        "line-dasharray": [3, 3]
+      "minzoom": 0,
+      "maxzoom": 22,
+      "metadata": {
+        "group": "basemap"
       }
     },
     {
-      "id": "geolines-label",
-      "type": "symbol",
-      "source": "maplibre",
-      "source-layer": "geolines",
-      "minzoom": 1,
-      "maxzoom": 24,
-      "filter": ["all", ["==", "name", "International Date Line"]],
-      "layout": {
-        "text-font": ["Open Sans Semibold"],
-        "text-size": {"stops": [[2, 12], [6, 16]]},
-        "text-field": "{name}",
-        "visibility": "none",
-        "symbol-placement": "line"
-      },
-      "paint": {
-        "text-color": "#1077B0",
-        "text-halo-blur": 1,
-        "text-halo-color": "rgba(255, 255, 255, 1)",
-        "text-halo-width": 1
+      "id": "argenmap_oscuro",
+      "type": "raster",
+      "source": "argenmap_oscuro",
+      "layout": {"visibility": "none"},
+      "minzoom": 0,
+      "maxzoom": 22,
+      "metadata": {
+        "group": "basemap"
       }
     },
     {
-      "id": "countries-label",
-      "type": "symbol",
-      "source": "maplibre",
-      "source-layer": "centroids",
-      "minzoom": 2,
-      "maxzoom": 24,
-      "filter": ["all"],
-      "layout": {
-        "text-font": ["Open Sans Semibold"],
-        "text-size": {"stops": [[2, 10], [4, 12], [6, 16]]},
-        "text-field": {"stops": [[2, "{ABBREV}"], [4, "{NAME}"]]},
-        "visibility": "visible",
-        "text-max-width": 10,
-        "text-transform": {"stops": [[0, "uppercase"], [2, "none"]]}
-      },
-      "paint": {
-        "text-color": "rgba(8, 37, 77, 1)",
-        "text-halo-blur": {"stops": [[2, 0.2], [6, 0]]},
-        "text-halo-color": "rgba(255, 255, 255, 1)",
-        "text-halo-width": {"stops": [[2, 1], [6, 1.6]]}
+      "id": "argenmap_topo",
+      "type": "raster",
+      "source": "argenmap_topo",
+      "layout": {"visibility": "none"},
+      "minzoom": 0,
+      "maxzoom": 22,
+      "metadata": {
+        "group": "basemap"
+      }
+    },
+    {
+      "id": "esri_imagery",
+      "type": "raster",
+      "source": "esri_imagery",
+      "layout": {"visibility": "none"},
+      "minzoom": 0,
+      "maxzoom": 22,
+      "metadata": {
+        "group": "basemap"
+      }
+    },
+    {
+      "id": "esri_imagery_t",
+      "type": "raster",
+      "source": "esri_imagery_t",
+      "layout": {"visibility": "none"},
+      "minzoom": 0,
+      "maxzoom": 22,
+      "metadata": {
+        "group": "basemap"
+      }
+    },
+    {
+      "id": "here_imagery",
+      "type": "raster",
+      "source": "here_imagery",
+      "layout": {"visibility": "none"},
+      "minzoom": 0,
+      "maxzoom": 22,
+      "metadata": {
+        "group": "basemap"
       }
     }
   ],

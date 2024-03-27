@@ -5,10 +5,39 @@ import 'maplibre-gl/dist/maplibre-gl.css';
 import MapLibreControlZoomHome from '../components/ui/maplibre-control-zoomhome';
 import MapboxDraw from "@mapbox/mapbox-gl-draw";
 import '@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css'
+import LayerSwitcherControl from '../components/ui/layerSwitcherControl';
+import '../components/ui/layerSwitcherControl.css';
 
+//maptiler
+// import * as maptilersdk from '@maptiler/sdk';
+// import "@maptiler/sdk/dist/maptiler-sdk.css";
 
 const MapComponent = () => {
   const [drawnFeatures, setDrawnFeatures] = useState([]);
+
+  const baseMaps = {
+    "argenmap": {
+      img: "/argenmap.png"
+    },
+    "argenmap_gris": {
+      img: "/argenmap-gris.png"
+    },
+    "argenmap_oscuro": {
+      img: "/argenmap-oscuro.png"
+    },
+    "argenmap_topo": {
+      img: "/argenmap-topo.png"
+    },
+    "esri_imagery": {
+      img: "/esri.png"
+    },
+    "esri_imagery_t": {
+      img: "/esrit.png"
+    },
+    "here_imagery": {
+      img: "/here.png"
+    },
+  }
 
   useEffect(() => {
     const map = new maplibregl.Map({
@@ -45,24 +74,23 @@ const MapComponent = () => {
     map.addControl(draw, 'top-right');
     map.addControl(new maplibregl.NavigationControl(), 'top-right');
     map.addControl(zoomhome, 'top-right');
+    map.addControl(new maplibregl.FullscreenControl(), 'top-right');
     map.addControl(new maplibregl.GeolocateControl({
       positionOptions: {
         enableHighAccuracy: true
       },
       trackUserLocation: true
     }), 'top-right');
-    map.addControl(new maplibregl.FullscreenControl(), 'top-right');
     map.addControl(new maplibregl.ScaleControl({}), 'bottom-right');
+    map.addControl(new LayerSwitcherControl({ basemaps: baseMaps, initialBasemapId: 'argenmap' }), 'bottom-left');
     // map.addControl(new maplibregl.AttributionControl(), 'bottom-left');
     // map.addControl(new maplibregl.AttributionControl({compact: false}), 'bottom-right');
     // map.addControl(new maplibregl.MarkerControl({}), 'top-right');
 
-    map.on('draw.create', ({ features }) => {
-      // Capturar datos del polígono dibujado
+    map.on('draw.create', ({ features }) => { // Capturar datos del polígono dibujado
       const drawnGeometry = features;
       console.log(drawnGeometry)
-      // Almacenar datos del polígono
-      setDrawnFeatures([...drawnFeatures, drawnGeometry]);
+      setDrawnFeatures([...drawnFeatures, drawnGeometry]);  // Almacenar datos del polígono
     });
 
     return () => map.remove();
