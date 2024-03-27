@@ -15,18 +15,6 @@ import '../components/ui/layerSwitcherControl.css';
 const MapComponent = () => {
   const [drawnFeatures, setDrawnFeatures] = useState([]);
 
-  // const baseMapsNEW = {};
-  // map.getStyle().layers.forEach(layer => {
-  //   if (layer.type === 'raster') {
-  //     baseMapsNEW[layer.id] = {
-  //       id: layer.id,
-  //       type: layer.type,
-  //       source: layer.source,
-  //     };
-  //   }
-  // });
-  // console.log(baseMapsNEW)
-
   const baseMaps = {
     "argenmap": {
       img: "/argenmap.png"

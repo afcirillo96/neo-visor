@@ -2,95 +2,69 @@ import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 
 class LayerSwitcherControl {
-  
-    constructor(options) {
-      this._options = {...options};
-      this._container = document.createElement("div");
-      this._container.classList.add("maplibregl-ctrl");
-      this._container.classList.add("maplibregl-ctrl-basemaps");
+
+  constructor(options) {
+    this._options = { ...options };
+    this._container = document.createElement("div");
+    this._container.classList.add("maplibregl-ctrl");
+    this._container.classList.add("maplibregl-ctrl-basemaps");
+    this._container.classList.add("closed");
+    switch (this._options.expandDirection || "right") {
+      case "top":
+        this._container.classList.add("reverse");
+      case "down":
+        this._container.classList.add("column");
+        break;
+      case "left":
+        this._container.classList.add("reverse");
+      case "right":
+        this._container.classList.add("row");
+    }
+    this._container.addEventListener("mouseenter", () => {
+      this._container.classList.remove("closed");
+    });
+    this._container.addEventListener("mouseleave", () => {
       this._container.classList.add("closed");
-      switch (this._options.expandDirection || "right") {
-        case "top":
-          this._container.classList.add("reverse");
-        case "down":
-          this._container.classList.add("column");
-          break;
-        case "left":
-          this._container.classList.add("reverse");
-        case "right":
-          this._container.classList.add("row");
-      }
-      this._container.addEventListener("mouseenter", () => {
-        this._container.classList.remove("closed");
-      });
-      this._container.addEventListener("mouseleave", () => {
-        this._container.classList.add("closed");
-      });
-    }
-  
-    onAdd(map) {
-      this._map = map;
-      const basemaps = this._options.basemaps;
-      const initialBaseMapId = this._options.initialBasemapId;
-      Object.keys(basemaps).forEach((basemapId) => {
-        const base = basemaps[basemapId];
-        const basemapContainer = document.createElement("img");
+    });
+  }
 
-        basemapContainer.src = base.img;
-        
-        basemapContainer.classList.add("basemap");
-        basemapContainer.id = basemapId;
-        basemapContainer.addEventListener("click", () => {
-          const activeElement = this._container.querySelector(".active");
-          activeElement.classList.remove("active");
-          basemapContainer.classList.add("active");
+  onAdd(map) {
+    this._map = map;
+    const basemaps = this._options.basemaps;
+    const initialBaseMapId = this._options.initialBasemapId;
+    Object.keys(basemaps).forEach((basemapId) => {
+      const base = basemaps[basemapId];
+      const basemapContainer = document.createElement("img");
 
-          map.getStyle().layers.forEach(layer => {
-            if (layer.metadata && layer.metadata.group === 'basemap') {
-              map.setLayoutProperty(layer.id, 'visibility', 'none'); //hides all raster basemaps
-            }
-          });
-          map.setLayoutProperty(basemapId, 'visibility', 'visible'); //activates raster basemap
+      basemapContainer.src = base.img;
 
+      basemapContainer.classList.add("basemap");
+      basemapContainer.id = basemapId;
+      basemapContainer.addEventListener("click", () => {
+        const activeElement = this._container.querySelector(".active");
+        activeElement.classList.remove("active");
+        basemapContainer.classList.add("active");
+
+        map.getStyle().layers.forEach(layer => {
+          if (layer.metadata && layer.metadata.group === 'basemap') {
+            map.setLayoutProperty(layer.id, 'visibility', 'none'); //hides all raster basemaps
+          }
         });
-        this._container.appendChild(basemapContainer);
+        map.setLayoutProperty(basemapId, 'visibility', 'visible'); //activates raster basemap
 
-        if (basemapContainer.id === initialBaseMapId) {
-          basemapContainer.classList.add("active");
-        }
       });
-      //   const base = basemaps[basemapId];
-      //   const basemapContainer = document.createElement("img");
+      this._container.appendChild(basemapContainer);
 
-      //   basemapContainer.src = base.img;
-        
-      //   basemapContainer.classList.add("basemap");
-      //   basemapContainer.id = basemapId;
-      //   basemapContainer.addEventListener("click", () => {
-      //     const activeElement = this._container.querySelector(".active");
-      //     activeElement.classList.remove("active");
-      //     basemapContainer.classList.add("active");
+      if (basemapContainer.id === initialBaseMapId) {
+        basemapContainer.classList.add("active");
+      }
+    });
+    return this._container;
+  }
 
-      //     map.getStyle().layers.forEach(layer => {
-      //       if (layer.metadata && layer.metadata.group === 'basemap') {
-      //         map.setLayoutProperty(layer.id, 'visibility', 'none'); //hides all raster basemaps
-      //       }
-      //     });
-      //     map.setLayoutProperty(basemapId, 'visibility', 'visible'); //activates raster basemap
-
-      //   });
-      //   this._container.appendChild(basemapContainer);
-
-      //   if (basemapContainer.id === initialBaseMapId) {
-      //     basemapContainer.classList.add("active");
-      //   }
-      // });
-      return this._container;
-    }
-  
-    onRemove(){
-      this._container.parentNode?.removeChild(this._container);
-      delete this._map;
-    }
+  onRemove() {
+    this._container.parentNode?.removeChild(this._container);
+    delete this._map;
+  }
 }
 export default LayerSwitcherControl;
