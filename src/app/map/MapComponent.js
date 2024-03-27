@@ -36,15 +36,25 @@ const MapComponent = () => {
     },
     "argenmap_oscuro": {
       img: "/argenmap-oscuro.png"
-    }
+    },
+    "argenmap_topo": {
+      img: "/argenmap-topo.png"
+    },
+    "esri_imagery": {
+      img: "/esri.png"
+    },
+    "esri_imagery_t": {
+      img: "/esrit.png"
+    },
+    "here_imagery": {
+      img: "/here.png"
+    },
   }
 
-  useEffect(() => {
-    const initialStyle = '/style.json'
-    
-    const map = new maplibregl.Map({ //maplibregl o maptilersdk
+  useEffect(() => {    
+    const map = new maplibregl.Map({
       container: 'map',
-      style: '/style.json', //initialStyle
+      style: '/style.json',
       center: [-64.9395, -40.5736],
       zoom: 3.7,
       bearing: 0,
