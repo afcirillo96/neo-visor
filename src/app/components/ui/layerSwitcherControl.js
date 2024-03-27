@@ -1,8 +1,3 @@
-//maptiler
-// import * as maptilersdk from '@maptiler/sdk';
-// import "@maptiler/sdk/dist/maptiler-sdk.css";
-
-//maplibre
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 
@@ -37,12 +32,14 @@ class LayerSwitcherControl {
       this._map = map;
       const basemaps = this._options.basemaps;
       const initialBaseMapId = this._options.initialBasemapId;
-      Object.keys(basemaps).forEach((layerId) => {
-        const base = basemaps[layerId];
+      Object.keys(basemaps).forEach((basemapId) => {
+        const base = basemaps[basemapId];
         const basemapContainer = document.createElement("img");
+
         basemapContainer.src = base.img;
+        
         basemapContainer.classList.add("basemap");
-        basemapContainer.id = layerId;
+        basemapContainer.id = basemapId;
         basemapContainer.addEventListener("click", () => {
           const activeElement = this._container.querySelector(".active");
           activeElement.classList.remove("active");
@@ -50,10 +47,10 @@ class LayerSwitcherControl {
 
           map.getStyle().layers.forEach(layer => {
             if (layer.type === 'raster') {
-              map.setLayoutProperty(layer.id, 'visibility', 'none'); // Hides all raster basemaps
+              map.setLayoutProperty(layer.id, 'visibility', 'none'); //hides all raster basemaps
             }
           });
-          map.setLayoutProperty(layerId, 'visibility', 'visible'); //activates raster basemap
+          map.setLayoutProperty(basemapId, 'visibility', 'visible'); //activates raster basemap
 
         });
         this._container.appendChild(basemapContainer);

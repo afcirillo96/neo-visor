@@ -51,7 +51,7 @@ const MapComponent = () => {
     },
   }
 
-  useEffect(() => {    
+  useEffect(() => {
     const map = new maplibregl.Map({
       container: 'map',
       style: '/style.json',
@@ -94,17 +94,17 @@ const MapComponent = () => {
       trackUserLocation: true
     }), 'top-right');
     map.addControl(new maplibregl.ScaleControl({}), 'bottom-right');
-    map.addControl(new LayerSwitcherControl({basemaps: baseMaps, initialBasemapId: 'argenmap'}), 'bottom-left');
+    map.addControl(new LayerSwitcherControl({ basemaps: baseMaps, initialBasemapId: 'argenmap' }), 'bottom-left');
     // map.addControl(new maplibregl.AttributionControl(), 'bottom-left');
     // map.addControl(new maplibregl.AttributionControl({compact: false}), 'bottom-right');
     // map.addControl(new maplibregl.MarkerControl({}), 'top-right');
-    
+
     map.on('draw.create', ({ features }) => { // Capturar datos del polígono dibujado
       const drawnGeometry = features;
       console.log(drawnGeometry)
       setDrawnFeatures([...drawnFeatures, drawnGeometry]);  // Almacenar datos del polígono
     });
-    
+
     return () => map.remove();
   }, []);
 
