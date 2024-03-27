@@ -75,7 +75,10 @@
       "source": "argenmap",
       "layout": {"visibility": "visible"},
       "minzoom": 0,
-      "maxzoom": 22
+      "maxzoom": 22,
+      "metadata": {
+        "group": "basemap"
+      }
     },
     {
       "id": "argenmap_gris",
@@ -83,7 +86,10 @@
       "source": "argenmap_gris",
       "layout": {"visibility": "none"},
       "minzoom": 0,
-      "maxzoom": 22
+      "maxzoom": 22,
+      "metadata": {
+        "group": "basemap"
+      }
     },
     {
       "id": "argenmap_oscuro",
@@ -91,7 +97,10 @@
       "source": "argenmap_oscuro",
       "layout": {"visibility": "none"},
       "minzoom": 0,
-      "maxzoom": 22
+      "maxzoom": 22,
+      "metadata": {
+        "group": "basemap"
+      }
     },
     {
       "id": "argenmap_topo",
@@ -99,7 +108,10 @@
       "source": "argenmap_topo",
       "layout": {"visibility": "none"},
       "minzoom": 0,
-      "maxzoom": 22
+      "maxzoom": 22,
+      "metadata": {
+        "group": "basemap"
+      }
     },
     {
       "id": "esri_imagery",
@@ -107,7 +119,10 @@
       "source": "esri_imagery",
       "layout": {"visibility": "none"},
       "minzoom": 0,
-      "maxzoom": 22
+      "maxzoom": 22,
+      "metadata": {
+        "group": "basemap"
+      }
     },
     {
       "id": "esri_imagery_t",
@@ -115,14 +130,21 @@
       "source": "esri_imagery_t",
       "layout": {"visibility": "none"},
       "minzoom": 0,
-      "maxzoom": 22
-    },    {
+      "maxzoom": 22,
+      "metadata": {
+        "group": "basemap"
+      }
+    },
+    {
       "id": "here_imagery",
       "type": "raster",
       "source": "here_imagery",
       "layout": {"visibility": "none"},
       "minzoom": 0,
-      "maxzoom": 22
+      "maxzoom": 22,
+      "metadata": {
+        "group": "basemap"
+      }
     }
   ],
   "id": "43f36e14-e3f5-43c1-84c0-50a9c80dc5c7",
