@@ -3,36 +3,79 @@ import React, { useState, useEffect } from 'react';
 import styles from './Settings.module.css';
 
 const Settings = () => {
-    const [colorFondo, setColorFondo] = useState('#ffffff');
+    const [primaryColor, setPrimaryColor] = useState('#ffffff');
+    const [secondaryColor, setSecondaryColor] = useState('#ffffff');
+    const [textColor, setTextColor] = useState('#ffffff');
+    const defaultPColor = getComputedStyle(document.documentElement).getPropertyValue('--primary-default--color');
+    const defaultSColor = getComputedStyle(document.documentElement).getPropertyValue('--secondary-default--color');
+    const defaultTxtColor = getComputedStyle(document.documentElement).getPropertyValue('--text-default--color');
 
     useEffect(() => {// Al cargar la página, obtener el color de fondo inicial desde el localStorage
-        const colorFondoGuardado = localStorage.getItem('colorFondoGlobal');
-        if (colorFondoGuardado) {
-            setColorFondo(colorFondoGuardado);// Aplicar el color de fondo guardado a toda la aplicación
-            document.documentElement.style.setProperty('--background--color', colorFondoGuardado);
+        const savedPrimaryColor = localStorage.getItem('primaryColor');
+        const savedSecondaryColor = localStorage.getItem('primaryColor');
+        const savedTxtColor = localStorage.getItem('primaryColor');
+
+        if (savedPrimaryColor) {
+            setPrimaryColor(savedPrimaryColor);
+            setSecondaryColor(savedSecondaryColor);
+            setTextColor(savedTxtColor);
+            document.documentElement.style.setProperty('--primary--color', savedPrimaryColor);
+            document.documentElement.style.setProperty('--secondary--color', savedSecondaryColor);
+            document.documentElement.style.setProperty('--text--color', savedTxtColor);
+        } else {
+            setPrimaryColor(defaultPColor);
+            setSecondaryColor(defaultSColor);
+            setTextColor(defaultTxtColor);
+            document.documentElement.style.setProperty('--primary--color', defaultPColor);
+            document.documentElement.style.setProperty('--secondary--color', defaultSColor);
+            document.documentElement.style.setProperty('--text--color', defaultTxtColor);
         }
     }, []);
 
-    // Función para manejar el cambio en el color de fondo
-    const handleChangeColorFondo = (e) => {
-        const nuevoColorFondo = e.target.value;
-        setColorFondo(nuevoColorFondo);
-        // Guardar en el localStorage
-        localStorage.setItem('colorFondoGlobal', nuevoColorFondo);
-        // Aplicar el nuevo color de fondo a toda la aplicación
-        document.documentElement.style.setProperty('--background--color', nuevoColorFondo);
+    //primaryColor
+    const handleChangePColor = (e) => {
+        const newColor = e.target.value;
+        setPrimaryColor(newColor);
+        localStorage.setItem('primaryColor', newColor);  // Guardar en el localStorage
+        document.documentElement.style.setProperty('--primary--color', newColor);
     };
 
-    // Función para manejar el clic del botón de color por defecto
-    const handleDefaultColorClick = () => {
-        // Finalmente, actualiza el valor en el localStorage utilizando setItem()
-        // localStorage.setItem("colorFondoGlobal", valorVariableCSS);
-        // console.log("Limpiar localStorage");
+    const handleDefaultPColor = () => {
+        document.documentElement.style.setProperty('--primary--color', defaultPColor);
+        localStorage.setItem("primaryColor", defaultPColor);
+        console.log("Se aplicó default!");
+    };
+
+    //secondaryColor
+    const handleChangeSColor = (e) => {
+        const newColor = e.target.value;
+        setSecondaryColor(newColor);
+        localStorage.setItem('secondaryColor', newColor);  // Guardar en el localStorage
+        document.documentElement.style.setProperty('--secondary--color', newColor);
+    };
+
+    const handleDefaultSColor = () => {
+        document.documentElement.style.setProperty('--secondary--color', defaultSColor);
+        localStorage.setItem("secondaryColor", defaultSColor);
+        console.log("Se aplicó default!");
+    };
+
+    //secondaryColor
+    const handleChangeTxtColor = (e) => {
+        const newColor = e.target.value;
+        setTextColor(newColor);
+        localStorage.setItem('textColor', newColor);
+        document.documentElement.style.setProperty('--text--color', newColor);
+    };
+
+    const handleDefaultTxtColor = () => {
+        document.documentElement.style.setProperty('--text--color', defaultTxtColor);
+        localStorage.setItem("textColor", defaultTxtColor);
+        console.log("Se aplicó default!");
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Puedes agregar lógica adicional aquí si es necesario al enviar el formulario
     };
 
     return (
@@ -43,33 +86,41 @@ const Settings = () => {
             <form className={styles.formMain} onSubmit={handleSubmit}>
                 <div className={styles.settingForm}>
                     <div >
-                        <label htmlFor="colorFondo">Color Primario: </label>
+                        <label htmlFor="primaryColor">Primario: </label>
                         <input
                             type="color"
-                            id="colorFondo"
-                            value={colorFondo}
-                            onChange={handleChangeColorFondo}
+                            id="primaryColor"
+                            value={primaryColor}
+                            onChange={handleChangePColor}
                         />
                     </div>
-                    <button type="button" className={styles.buttonS} onClick={handleDefaultColorClick}>Por Defecto</button>
+                    <button type="button" className={styles.buttonS} onClick={handleDefaultPColor}>Por Defecto</button>
                 </div>
 
                 <div className={styles.settingForm}>
                     <div >
-                        <label htmlFor="colorFondo">Color Secundario: </label>
+                        <label htmlFor="primaryColor">Secundario: </label>
                         <input
                             type="color"
-                            id="colorFondo"
-                            value={colorFondo}
-                            onChange={handleChangeColorFondo}
+                            id="secondaryColor"
+                            value={secondaryColor}
+                            onChange={handleChangeSColor}
                         />
                     </div>
-                    <button type="button" className={styles.buttonS} onClick={handleDefaultColorClick}>Por Defecto</button>
+                    <button type="button" className={styles.buttonS} onClick={handleDefaultSColor}>Por Defecto</button>
                 </div>
 
                 <div className={styles.settingForm}>
-                    <label htmlFor="textColor">Color del Texto:</label>
-                    <input type="color" id="textColor" name="textColor" required />
+                    <div >
+                        <label htmlFor="primaryColor">Texto: </label>
+                        <input
+                            type="color"
+                            id="textColor"
+                            value={textColor}
+                            onChange={handleChangeTxtColor}
+                        />
+                    </div>
+                    <button type="button" className={styles.buttonS} onClick={handleDefaultTxtColor}>Por Defecto</button>
                 </div>
             </form>
 

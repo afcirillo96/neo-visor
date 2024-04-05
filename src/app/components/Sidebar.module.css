@@ -1,6 +1,6 @@
 /* Sidebar */
 .sidebar {
-  background: var(--background--color);
+  background: var(--primary--color);
   border-radius: 6px;
   height: 82%;
   margin-top: 0.3rem;
@@ -56,7 +56,7 @@
 /* SubMenu */
 .subMenu {
   position: fixed;
-  background: var(--background--color);
+  background: var(--primary--color);
   text-emphasis-color: #fff;
   transition: left 0.3s ease;
   z-index: 99999;

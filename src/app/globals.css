@@ -2,12 +2,41 @@
 @tailwind components;
 @tailwind utilities;
 
+
+/* #242C4F
+R:37 G:44 B:79
+C:96% M:85% Y:38% K:38%
+
+#45658D
+R:69 G:101 B:141
+C:79% M:56% Y:25% K:8%
+
+#E7BA61
+R:231 G:186 B:97
+C:10% M:27% Y:69% K:1%
+
+#141414
+R: 20 G:20 B:20
+C:78% M:69% Y:61% K:87%
+
+#ffffff
+R:255 G:255 B:255
+C:0% M:0% Y:0% K:0% */
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
-  --background--color: #242C4F;
+  
+  --primary--color: #242C4F;
+  --secondary--color: #45658D;
+  --text--color: #ffffff;
   --selectedText--color: #E7BA61;
+
+  --primary-default--color: #242C4F;
+  --secondary-default--color: #45658D;
+  --text-default--color: #ffffff;
+  --selectedText-default--color: #E7BA61;
 
 }
 

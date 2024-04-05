@@ -12,7 +12,7 @@ export default function Layout() {
         if (colorFondoGuardado) {
             setColorFondo(colorFondoGuardado);
             // Aplicar el color de fondo guardado a toda la aplicación
-            document.documentElement.style.setProperty('--background--color', colorFondoGuardado);
+            document.documentElement.style.setProperty('--primary--color', colorFondoGuardado);
         }
     }, []);
 
@@ -23,7 +23,7 @@ export default function Layout() {
         // Guardar en el localStorage
         localStorage.setItem('colorFondoGlobal', nuevoColorFondo);
         // Aplicar el nuevo color de fondo a toda la aplicación
-        document.documentElement.style.setProperty('--background--color', nuevoColorFondo);
+        document.documentElement.style.setProperty('--primary--color', nuevoColorFondo);
     };
 
     // Función para manejar el clic del botón de color por defecto
