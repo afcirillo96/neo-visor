@@ -135,13 +135,14 @@ const Sidebar = () => {
                 <button onClick={() => {
                   showMore();
                   toggleSubMenu(item.id);
-                }} key={index2}> {/* button added to fix routes issue */}
-                  <div className={styles.menuButton}>
-                    <item.icon className={`${styles.buttonIcon}`} />
-                    <motion.p animate={controlText} className={`${history == item.href ? styles.buttonTextActive : styles.buttonText}`}>
-                      {item.title}
-                    </motion.p>
-                  </div>
+                }} key={index2} className={styles.mainButton}> {/* button added to fix routes issue */}
+                  <item.icon/>
+
+                  <motion.p animate={controlText}>
+                   {item.title}
+                  </motion.p>
+
+
                 </button>
               ))}
             </div>
