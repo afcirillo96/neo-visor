@@ -1,0 +1,25 @@
+.formMain {
+    display: flex;
+    gap: 0px;
+    justify-content: space-around;
+}
+
+.settingForm {
+    display: flex;
+    padding: 21px;
+    border: solid #ffffff 1px;
+    flex-direction: column;
+    align-items: flex-start;
+    border-radius: 6px;
+}
+
+.buttonS {
+    cursor: pointer;
+    background: #45658D;
+    border-radius: 2px;
+    padding: 4px;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 15px;
+    border: solid #ffffff 2px;
+}

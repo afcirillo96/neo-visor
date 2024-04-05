@@ -36,29 +36,69 @@ const Settings = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <h1>Configuración de Estilos</h1>
-            <div className="form-group">
-                <label htmlFor="colorFondo">Color de fondo de la aplicación:</label>
-                <input
-                    type="color"
-                    id="colorFondo"
-                    value={colorFondo}
-                    onChange={handleChangeColorFondo}
-                />
-                <button type="button" onClick={handleDefaultColorClick}>Color por Defecto</button>
-            </div>
+        <div>
+            <h1>CONFIGURACIÓN DE ESTILOS</h1>
+            <br/>
+            <h1>Color de la Aplicación</h1>
+            <form className={styles.formMain} onSubmit={handleSubmit}>
+                <div className={styles.settingForm}>
+                    <div >
+                        <label htmlFor="colorFondo">Color Primario: </label>
+                        <input
+                            type="color"
+                            id="colorFondo"
+                            value={colorFondo}
+                            onChange={handleChangeColorFondo}
+                        />
+                    </div>
+                    <button type="button" className={styles.buttonS} onClick={handleDefaultColorClick}>Por Defecto</button>
+                </div>
 
-            <div className="form-group">
-                <label htmlFor="textSize">Tamaño del texto:</label>
-                <input type="number" id="textSize" name="textSize" min="8" max="72" required />
-            </div>
-            <div className="form-group">
-                <label htmlFor="textColor">Color del texto:</label>
-                <input type="color" id="textColor" name="textColor" required />
-            </div>
-            <button type="submit">Guardar cambios</button>
-        </form>
+                <div className={styles.settingForm}>
+                    <div >
+                        <label htmlFor="colorFondo">Color Secundario: </label>
+                        <input
+                            type="color"
+                            id="colorFondo"
+                            value={colorFondo}
+                            onChange={handleChangeColorFondo}
+                        />
+                    </div>
+                    <button type="button" className={styles.buttonS} onClick={handleDefaultColorClick}>Por Defecto</button>
+                </div>
+
+                <div className={styles.settingForm}>
+                    <label htmlFor="textColor">Color del Texto:</label>
+                    <input type="color" id="textColor" name="textColor" required />
+                </div>
+            </form>
+
+            <br/>
+            <hr/>
+            <h1>Usuario</h1>
+            <form className={styles.formMain} onSubmit={handleSubmit}>
+                <div className={styles.settingForm}>
+                    <label htmlFor="textSize">Tamaño del Texto:</label>
+                    <input type="number" id="textSize" name="textSize" min="8" max="72" required />
+                </div>
+
+                <div className={styles.settingForm}>
+                    <label htmlFor="textSize">Tamaño del Texto:</label>
+                    <input type="number" id="textSize" name="textSize" min="8" max="72" required />
+                </div>
+
+                <div className={styles.settingForm}>
+                    <label htmlFor="textColor">Color del Texto:</label>
+                    <input type="color" id="textColor" name="textColor" required />
+                </div>
+            </form>
+            
+            <br/>
+            <hr/>
+            <br/>
+
+            <button type="submit" className={styles.buttonS}>Guardar Cambios</button>
+        </div>
     );
 
 }
