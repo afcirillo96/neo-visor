@@ -17,17 +17,23 @@ const Settings = () => {
 
         if (savedPrimaryColor) {
             setPrimaryColor(savedPrimaryColor);
-            setSecondaryColor(savedSecondaryColor);
-            setTextColor(savedTxtColor);
             document.documentElement.style.setProperty('--primary--color', savedPrimaryColor);
-            document.documentElement.style.setProperty('--secondary--color', savedSecondaryColor);
-            document.documentElement.style.setProperty('--text--color', savedTxtColor);
         } else {
             setPrimaryColor(defaultPColor);
-            setSecondaryColor(defaultSColor);
-            setTextColor(defaultTxtColor);
             document.documentElement.style.setProperty('--primary--color', defaultPColor);
+        }
+        if (savedSecondaryColor) {
+            setSecondaryColor(savedSecondaryColor);
+            document.documentElement.style.setProperty('--secondary--color', savedSecondaryColor);
+        } else {
+            setSecondaryColor(defaultSColor);
             document.documentElement.style.setProperty('--secondary--color', defaultSColor);
+        }
+        if (savedTxtColor) {
+            setTextColor(savedTxtColor);
+            document.documentElement.style.setProperty('--text--color', savedTxtColor);
+        } else {
+            setTextColor(defaultTxtColor);
             document.documentElement.style.setProperty('--text--color', defaultTxtColor);
         }
     }, []);
@@ -39,7 +45,6 @@ const Settings = () => {
         localStorage.setItem('primaryColor', newColor);  // Guardar en el localStorage
         document.documentElement.style.setProperty('--primary--color', newColor);
     };
-
     const handleDefaultPColor = () => {
         document.documentElement.style.setProperty('--primary--color', defaultPColor);
         localStorage.setItem("primaryColor", defaultPColor);
@@ -53,7 +58,6 @@ const Settings = () => {
         localStorage.setItem('secondaryColor', newColor);  // Guardar en el localStorage
         document.documentElement.style.setProperty('--secondary--color', newColor);
     };
-
     const handleDefaultSColor = () => {
         document.documentElement.style.setProperty('--secondary--color', defaultSColor);
         localStorage.setItem("secondaryColor", defaultSColor);
@@ -67,7 +71,6 @@ const Settings = () => {
         localStorage.setItem('textColor', newColor);
         document.documentElement.style.setProperty('--text--color', newColor);
     };
-
     const handleDefaultTxtColor = () => {
         document.documentElement.style.setProperty('--text--color', defaultTxtColor);
         localStorage.setItem("textColor", defaultTxtColor);
@@ -129,18 +132,18 @@ const Settings = () => {
             <h1>Usuario</h1>
             <form className={styles.formMain} onSubmit={handleSubmit}>
                 <div className={styles.settingForm}>
-                    <label htmlFor="textSize">Tamaño del Texto:</label>
+                    <label htmlFor="textSize">WIP:</label>
                     <input type="number" id="textSize" name="textSize" min="8" max="72" required />
                 </div>
 
                 <div className={styles.settingForm}>
-                    <label htmlFor="textSize">Tamaño del Texto:</label>
+                <label htmlFor="textSize">WIP:</label>
                     <input type="number" id="textSize" name="textSize" min="8" max="72" required />
                 </div>
 
                 <div className={styles.settingForm}>
-                    <label htmlFor="textColor">Color del Texto:</label>
-                    <input type="color" id="textColor" name="textColor" required />
+                <label htmlFor="textSize">WIP:</label>
+                <input type="number" id="textSize" name="textSize" min="8" max="72" required />
                 </div>
             </form>
             
