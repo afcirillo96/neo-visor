@@ -31,12 +31,12 @@ C:0% M:0% Y:0% K:0% */
   --primary--color: #242C4F;
   --secondary--color: #45658D;
   --text--color: #ffffff;
-  --selectedText--color: #E7BA61;
+  --active--color: #E7BA61;
 
   --primary-default--color: #242C4F;
   --secondary-default--color: #45658D;
   --text-default--color: #ffffff;
-  --selectedText-default--color: #E7BA61;
+  --active-default--color: #E7BA61;
 }
 
 @media (prefers-color-scheme: dark) {

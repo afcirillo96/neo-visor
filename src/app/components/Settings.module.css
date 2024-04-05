@@ -22,3 +22,8 @@
     font-size: 15px;
     border: solid #ffffff 2px;
 }
+
+.buttonS:hover {
+    background: var(--active--color);
+    text-decoration: none;
+  }
