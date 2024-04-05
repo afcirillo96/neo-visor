@@ -1,15 +1,14 @@
 'use client'
 import React, { useState, useEffect } from 'react';
+import styles from './Settings.module.css';
 
 const Settings = () => {
-    const [colorFondo, setColorFondo] = useState('#ffffff'); // Estado para el color de fondo
+    const [colorFondo, setColorFondo] = useState('#ffffff');
 
-    useEffect(() => {
-        // Al cargar la página, obtener el color de fondo inicial desde el localStorage
+    useEffect(() => {// Al cargar la página, obtener el color de fondo inicial desde el localStorage
         const colorFondoGuardado = localStorage.getItem('colorFondoGlobal');
         if (colorFondoGuardado) {
-            setColorFondo(colorFondoGuardado);
-            // Aplicar el color de fondo guardado a toda la aplicación
+            setColorFondo(colorFondoGuardado);// Aplicar el color de fondo guardado a toda la aplicación
             document.documentElement.style.setProperty('--background--color', colorFondoGuardado);
         }
     }, []);
