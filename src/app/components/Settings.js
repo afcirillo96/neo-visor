@@ -15,27 +15,14 @@ const Settings = () => {
         const savedSecondaryColor = localStorage.getItem('secondaryColor');
         const savedTxtColor = localStorage.getItem('textColor');
 
-        if (savedPrimaryColor) {
-            setPrimaryColor(savedPrimaryColor);
-            document.documentElement.style.setProperty('--primary--color', savedPrimaryColor);
-        } else {
-            setPrimaryColor(defaultPColor);
-            document.documentElement.style.setProperty('--primary--color', defaultPColor);
-        }
-        if (savedSecondaryColor) {
-            setSecondaryColor(savedSecondaryColor);
-            document.documentElement.style.setProperty('--secondary--color', savedSecondaryColor);
-        } else {
-            setSecondaryColor(defaultSColor);
-            document.documentElement.style.setProperty('--secondary--color', defaultSColor);
-        }
-        if (savedTxtColor) {
-            setTextColor(savedTxtColor);
-            document.documentElement.style.setProperty('--text--color', savedTxtColor);
-        } else {
-            setTextColor(defaultTxtColor);
-            document.documentElement.style.setProperty('--text--color', defaultTxtColor);
-        }
+        const setCustomColor = (savedColor, defaultColor, propertyName, stateSetter) => {
+            const color = savedColor || defaultColor;
+            stateSetter(color);
+            document.documentElement.style.setProperty(`--${propertyName}`, color);
+        };   
+        setCustomColor(savedPrimaryColor, defaultPColor, 'primary--color', setPrimaryColor);
+        setCustomColor(savedSecondaryColor, defaultSColor, 'secondary--color', setSecondaryColor);
+        setCustomColor(savedTxtColor, defaultTxtColor, 'text--color', setTextColor);
     }, []);
 
     //primaryColor
