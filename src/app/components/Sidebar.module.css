@@ -80,22 +80,21 @@
 
 /* Menu Buttons */ 
 .mainButton {
-  font-weight: 600;
-  font-size: large;
-  margin-left: 1rem;
-  color: white;
-  opacity: 1;
+  align-items: center;
   cursor: pointer;
   display: flex;
-  align-items: center;
+  font-size: large;
+  font-weight: 600;
   height: 35px;
   margin-block: inherit;
+  margin-left: 1rem;
+  opacity: 1;
 }
 
 .mainButton svg { 
-  width: 24px;
-  height: 24px;
   margin-right: 15px;
+  height: 24px;
+  width: 24px;
 }
 
 .mainButton p {

@@ -132,17 +132,19 @@ const Sidebar = () => {
 
               {/* Buttons */}
               {group.items.map((item, index2) => (
-                <button onClick={() => {
-                  showMore();
-                  toggleSubMenu(item.id);
-                }} key={index2} className={styles.mainButton}> {/* button added to fix routes issue */}
-                  <item.icon/>
-
+                <button 
+                  onClick={() => {
+                    showMore();
+                    toggleSubMenu(item.id);
+                  }}
+                  key={index2}
+                  className={styles.mainButton}
+                  style={{ color: activeSubMenu === item.id ? '#E7BA61' : 'white' }}
+                >
+                  <item.icon />
                   <motion.p animate={controlText}>
-                   {item.title}
+                    {item.title}
                   </motion.p>
-
-
                 </button>
               ))}
             </div>
