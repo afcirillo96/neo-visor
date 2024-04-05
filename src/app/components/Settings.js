@@ -12,8 +12,8 @@ const Settings = () => {
 
     useEffect(() => {// Al cargar la página, obtener el color de fondo inicial desde el localStorage
         const savedPrimaryColor = localStorage.getItem('primaryColor');
-        const savedSecondaryColor = localStorage.getItem('primaryColor');
-        const savedTxtColor = localStorage.getItem('primaryColor');
+        const savedSecondaryColor = localStorage.getItem('secondaryColor');
+        const savedTxtColor = localStorage.getItem('textColor');
 
         if (savedPrimaryColor) {
             setPrimaryColor(savedPrimaryColor);
