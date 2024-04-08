@@ -23,6 +23,7 @@ const Sidebar = () => {
   const controls = useAnimation();
   const controlText = useAnimation();
   const controlTitleText = useAnimation();
+  const controllogoMain = useAnimation();
   const router = useRouter();
   const activeColor = getComputedStyle(document.documentElement).getPropertyValue('--active--color');
 
@@ -56,6 +57,10 @@ const Sidebar = () => {
       opacity: 1,
       transition: { delay: 0.3 },
     });
+    controllogoMain.start({
+      opacity: 1,
+      display: 'block',
+    });
     setSideBarActive(true);
   };
 
@@ -64,14 +69,16 @@ const Sidebar = () => {
       width: '55px',
       transition: { duration: 0.101 },
     });
-
     controlText.start({
       opacity: 0,
       display: 'none',
     });
-
     controlTitleText.start({
       opacity: 0,
+    });
+    controllogoMain.start({
+      opacity: 0,
+      display: 'none',
     });
     setSideBarActive(false);
     document.getElementById('subMenu').style.display = "none";
@@ -101,7 +108,6 @@ const Sidebar = () => {
     if (hash != '') {
       showMore();
     }
-    // console.log("se modifico la url:", hash)
   };
 
   useEffect(() => {   //Toma la URL actual
@@ -113,6 +119,10 @@ const Sidebar = () => {
     <div>
       <motion.div animate={controls} className={styles.sidebar}>
         {/* Sidebar Show/Hide Button */}
+        <motion.div initial={{opacity: 0, display: 'none' }} animate={controllogoMain}>
+          <img src="logoMain.png" alt="Neo-Visor Img" className={styles.logo} title="Neo-Visor"/>
+        </motion.div>
+
         <button className={`${styles.sidebarButton} ${sideBarActive ? styles.sidebarButtonOpen : styles.sidebarButtonClosed}`} onClick={toggleSideBar}>
           {sideBarActive ? (
             <BsFillArrowLeftSquareFill />
@@ -151,6 +161,7 @@ const Sidebar = () => {
             </div>
           ))}
         </div>
+
 
       </motion.div>
 
