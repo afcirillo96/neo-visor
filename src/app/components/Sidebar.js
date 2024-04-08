@@ -132,9 +132,9 @@ const Sidebar = () => {
         </button>
 
         {/* Menu Buttons */}
-        <div className='grow'>
+        <div id='menuButtons' className='grow'>
           {pagesData.map((group, index) => (
-            <div key={index} className='my-2'>
+            <div key={index} className={styles.my2}>
 
               {/* Menu Title */}
               <motion.p animate={controlTitleText} className={styles.sidebarTitleText}>
@@ -149,7 +149,7 @@ const Sidebar = () => {
                     toggleSubMenu(item.id);
                   }}
                   key={index2}
-                  className={styles.mainButton}
+                  className={styles.menuButton}
                   style={{ color: activeSubMenu === item.id ? activeColor : 'white' }}
                 >
                   <item.icon />

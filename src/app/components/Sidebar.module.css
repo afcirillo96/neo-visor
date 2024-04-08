@@ -8,6 +8,14 @@
   position: absolute;
 }
 
+.my2 {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
 .sidebar {
   background: var(--primary--color);
   border-radius: 6px;
@@ -94,7 +102,7 @@
 }
 
 /* Menu Buttons */ 
-.mainButton {
+.menuButton {
   align-items: center;
   cursor: pointer;
   display: flex;
@@ -102,16 +110,17 @@
   font-weight: 600;
   height: 35px;
   margin-block: inherit;
-  margin-left: 1rem;
   opacity: 1;
+  width: 100%;
 }
 
-.mainButton svg { 
+.menuButton svg { 
   margin-right: 15px;
   height: 24px;
+  margin-left: 1rem;
   width: 24px;
 }
 
-.mainButton p {
+.menuButton p {
   display: none;
 }
