@@ -55,7 +55,7 @@ const Settings = () => {
         localStorage.setItem("secondaryColor", defaultSColor);
     };
 
-    //secondaryColor
+    //textColor
     const handleChangeTxtColor = (e) => {
         const newColor = e.target.value;
         setTextColor(newColor);
@@ -79,17 +79,24 @@ const Settings = () => {
         localStorage.setItem("activeColor", defaultActColor);
     };
 
+    const handleDefaultAll = () => {
+        handleDefaultPColor();
+        handleDefaultSColor();
+        handleDefaultTxtColor();
+        handleDefaultActColor();
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
     };
 
     return (
         <div>
-            <h1>CONFIGURACIÓN DE ESTILOS</h1>
+            <div>CONFIGURACIÓN DE ESTILOS</div>
             <br/>
-            <h1>Color de la Aplicación</h1>
+            <div className={styles.title}>Color de la Aplicación</div>
             <form className={styles.formMain} onSubmit={handleSubmit}>
-                <div className={styles.settingForm}>
+                <div className={styles.settingWrapper}>
                     <div >
                         <label htmlFor="primaryColor">Primario: </label>
                         <input
@@ -102,7 +109,7 @@ const Settings = () => {
                     <button type="button" className={styles.buttonS} onClick={handleDefaultPColor}>Por Defecto</button>
                 </div>
 
-                <div className={styles.settingForm}>
+                <div className={styles.settingWrapper}>
                     <div >
                         <label htmlFor="secondaryColor">Secundario: </label>
                         <input
@@ -115,7 +122,7 @@ const Settings = () => {
                     <button type="button" className={styles.buttonS} onClick={handleDefaultSColor}>Por Defecto</button>
                 </div>
 
-                <div className={styles.settingForm}>
+                <div className={styles.settingWrapper}>
                     <div >
                         <label htmlFor="textColor">Texto: </label>
                         <input
@@ -128,7 +135,7 @@ const Settings = () => {
                     <button type="button" className={styles.buttonS} onClick={handleDefaultTxtColor}>Por Defecto</button>
                 </div>
 
-                <div className={styles.settingForm}>
+                <div className={styles.settingWrapper}>
                     <div >
                         <label htmlFor="activeColor">Activado: </label>
                         <input
@@ -144,19 +151,19 @@ const Settings = () => {
 
             <br/>
             <hr/>
-            <h1>WIP</h1>
+            <div className={styles.title}>WIP</div>
             <form className={styles.formMain} onSubmit={handleSubmit}>
-                <div className={styles.settingForm}>
+                <div className={styles.settingWrapper}>
                     <label htmlFor="textSize">WIP:</label>
                     <input type="number" id="textSize" name="textSize" min="8" max="72" required />
                 </div>
 
-                <div className={styles.settingForm}>
+                <div className={styles.settingWrapper}>
                 <label htmlFor="textSize">WIP:</label>
                     <input type="number" id="textSize" name="textSize" min="8" max="72" required />
                 </div>
 
-                <div className={styles.settingForm}>
+                <div className={styles.settingWrapper}>
                 <label htmlFor="textSize">WIP:</label>
                 <input type="number" id="textSize" name="textSize" min="8" max="72" required />
                 </div>
@@ -166,7 +173,7 @@ const Settings = () => {
             <hr/>
             <br/>
 
-            <button type="submit" className={styles.buttonS}>Guardar Cambios</button>
+            <button type="button" className={styles.buttonS} onClick={handleDefaultAll}>Reestablecer Valores</button>
         </div>
     );
 

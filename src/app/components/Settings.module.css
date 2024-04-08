@@ -1,13 +1,19 @@
+.title {
+    margin-bottom: 5px;
+    margin-top: 5px;
+    font-weight: bold;
+}
+
 .formMain {
     display: flex;
     gap: 0px;
     justify-content: space-around;
 }
 
-.settingForm {
+.settingWrapper {
     display: flex;
     padding: 21px;
-    border: solid #ffffff 1px;
+    border: solid #ffffff 2px;
     flex-direction: column;
     align-items: flex-start;
     border-radius: 6px;
@@ -24,6 +30,6 @@
 }
 
 .buttonS:hover {
-    background: var(--active--color);
+    background: var(--secondary--color);
     text-decoration: none;
-  }
+}

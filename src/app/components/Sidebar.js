@@ -24,6 +24,7 @@ const Sidebar = () => {
   const controlText = useAnimation();
   const controlTitleText = useAnimation();
   const router = useRouter();
+  const activeColor = getComputedStyle(document.documentElement).getPropertyValue('--active--color');
 
   const pagesData = [
     {
@@ -139,7 +140,7 @@ const Sidebar = () => {
                   }}
                   key={index2}
                   className={styles.mainButton}
-                  style={{ color: activeSubMenu === item.id ? '#E7BA61' : 'white' }}
+                  style={{ color: activeSubMenu === item.id ? activeColor : 'white' }}
                 >
                   <item.icon />
                   <motion.p animate={controlText}>
