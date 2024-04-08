@@ -1,6 +1,6 @@
 'use client'
 import React, { useState, useEffect } from 'react';
-import styles from './Settings.module.css';
+import styles from './Components.module.css';
 
 const Settings = () => {
     const [primaryColor, setPrimaryColor] = useState('#ffffff');
