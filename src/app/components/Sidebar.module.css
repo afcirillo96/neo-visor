@@ -116,6 +116,22 @@
   width: 100%;
 }
 
+.activeMenuButton {
+  align-items: center;
+  border-radius: 6px;
+  border: solid var(--secondary--color) 1px;
+  color: var(--active--color);
+  cursor: pointer;
+  display: flex;
+  font-size: large; 
+  font-weight: 600;
+  height: 35px;
+  margin-block: inherit;
+  opacity: 1;
+  user-select: none;
+  width: 100%;
+}
+
 .menuButton svg { 
   margin-right: 15px;
   height: 24px;

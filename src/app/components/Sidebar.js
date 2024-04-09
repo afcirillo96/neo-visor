@@ -149,8 +149,7 @@ const Sidebar = () => {
                     toggleSubMenu(item.id);
                   }}
                   key={index2}
-                  className={styles.menuButton}
-                  style={{ color: activeSubMenu === item.id ? activeColor : 'white' }}
+                  className={`${styles.menuButton} ${activeSubMenu === item.id ? styles.activeMenuButton : ''}`}
                 >
                   <item.icon />
                   <motion.p animate={controlText}>
